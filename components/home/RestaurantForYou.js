@@ -212,8 +212,8 @@ const RestaurantInfo = (props) => (
       />
 
     {/* This is the button for the +4 or whatever the number is in the event of overflow but there is no logic applied right now*/}
-    <View style={[GlobalStyles.radius25x, { borderWidth: 1, borderColor: TintsColors.MediumGray, width: 36, height: 36, justifyContent: 'center', alignItems: 'center' }]}>
-      <Text style={[type.body2S, { color: TintsColors.MediumGray }]}>+4</Text>
+    <View style={[GlobalStyles.radius25x, { borderWidth: 1, borderColor: TintsColors.MidLightGray, width: 36, height: 36, justifyContent: 'center', alignItems: 'center' }]}>
+      <Text style={[type.body2S, { color: TintsColors.MidLightGray }]}>+4</Text>
     </View>
 
     </View>

@@ -18,7 +18,7 @@ const AccountInfoCard = ({ imageSource, name, username }) => {
       />
       <View style={styles.rectangle}>
         <Text style={[type.heading2L, { color: TintsColors.DarkGray, paddingTop: 16}]}>{name}</Text>
-        <Text style={[type.body1M, { color: TintsColors.MediumGray }]}>{username}</Text>
+        <Text style={[type.body1M, { color: TintsColors.MidLightGray }]}>{username}</Text>
       </View>
     </View>
   );
