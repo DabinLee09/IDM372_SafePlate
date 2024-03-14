@@ -10,6 +10,8 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import { PrimaryColors } from "../../settings/styles/Colors";
 import { useData } from "../DataContext";
+import GlobalStyles from "../../settings/styles/GlobalStyle";
+import { spacing } from "../../settings/styles/Spacing";
 
  const YELP_API_KEY ="DaWbOrSWK54qhbQSXVUzcYTsEunAKnfwJ3i4NA8F4oVSSbUdvK5aDF4_xKpSh7fCO63rAVHvuQqEk6V7R3mTFg0y9Q5MiC4hSGEs7AdsE88FTfM7NFlzL73weZQ3ZXYx";
 
@@ -68,8 +70,8 @@ export default function RestaurantForYou({ props }) {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <View>
-        <Text style={type.heading2L}>Restaurant For You</Text>
-        <Text style={type.body1M}>
+        <Text style={type.heading2L}>Restaurants For You</Text>
+        <Text style={[type.body1M, spacing.vert2x]}>
           Carefully selected based on your restrictions
         </Text>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
@@ -226,14 +228,25 @@ const RestaurantDietInfo = () => {
 };
 
 const styles = StyleSheet.create({
+  // card: {
+  //   elevation: 2,
+  //   shadowColor: "#000",
+  //   shadowOpacity: 1.15,
+  //   shadowRadius: 4,
+  //   shadowOffset: {
+  //     width: 2,
+  //     height: 2,
+  //   },
+  // },
+
   card: {
-    elevation: 2,
-    shadowColor: "#000",
-    shadowOpacity: 1.15,
+    backgroundColor: 'white',
+    ...GlobalStyles.radius1x,
+    shadowColor: 'rgba(0, 0, 0, 0.15)',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 1,
     shadowRadius: 4,
-    shadowOffset: {
-      width: 2,
-      height: 2,
-    },
+    elevation: 4,
   },
+
 });
