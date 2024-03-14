@@ -27,7 +27,10 @@ export default function Account() {
             username="@janedoe123"
           />
 
-          <Text style={[type.heading3M, spacing.vert2x, {color: TintsColors.DarkGray}]}>Your Restrictions</Text>
+          <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between'}}>
+            <Text style={[type.heading3M, spacing.vert2x, {color: TintsColors.DarkGray}]}>Your Restrictions</Text>
+            <Text style={[{ color: TintsColors.MidLightGray, textDecorationLine: 'underline'}, type.body1M]}>Edit</Text>
+          </View>
 
           <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'flex-start', ...spacing.vert3x }}>
           <DietaryPill
