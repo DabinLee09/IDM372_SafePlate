@@ -13,10 +13,9 @@ import Buddies from './screens/Buddies';
 import Account from './screens/Account';
 import SearchTabDefault from './screens/SearchTabDefault';
 import SearchTabType from './screens/SearchTabType';
-import { PrimaryColors } from './settings/styles/Colors';
+import { PrimaryColors, SecondaryColors, TintsColors } from './settings/styles/Colors';
 import RestaurantList from './screens/RestaurantList';
 import { DataProvider } from './components/DataContext';
-
 
 
 //SearchTab
@@ -32,14 +31,14 @@ function SearchTabGroup({ route, navigation }){
   return(
     <SearchTab.Navigator screenOptions={{
       tabBarLabelStyle: {fontSize: 16, textTransform: "none"},
-      tabBarActiveTintColor: "#53A385",
-      tabBarInactiveTintColor: "#7E7E7E",
+      tabBarActiveTintColor: PrimaryColors.Green,
+      tabBarInactiveTintColor: TintsColors.MidLightGray,
       tabBarIndicatorStyle: { 
         height: 3, 
         borderRadius: 4, 
         marginHorizontal: 60,
         width: 80, 
-        backgroundColor: "#53A385",
+        backgroundColor: PrimaryColors.Green,
       } ,
     }}>
       <SearchTab.Screen name="Default Search" component={SearchTabDefault} />
@@ -99,7 +98,7 @@ function TabGroup({ navigation, route }) {
                 } else if (route.name === "Buddies"){
                     iconName = focused ? "account-supervisor" : "account-supervisor-outline";
                 } else if (route.name === "Account"){
-                    iconName = focused ? "account-supervisor-circle" : "account-supervisor-circle-outline";
+                    iconName = focused ? "account-circle" : "account-circle-outline";
                 }
                 return <MaterialCommunityIcons 
                 name={iconName} 
@@ -112,7 +111,7 @@ function TabGroup({ navigation, route }) {
                 
             },
             tabBarActiveTintColor: PrimaryColors.Green,
-            tabBarInactiveTintColor: "gray"
+            tabBarInactiveTintColor: TintsColors.MidLightGray
         })}
         >
             
