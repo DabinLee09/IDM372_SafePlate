@@ -15,9 +15,9 @@ const BuddyInfo = ({ imageSource, name, username, restrictions }) => {
         />
 
         <View style={styles.column}>
-            <Text style={[type.heading4M, { color: TintsColors.DarkGray }]}>{name}</Text>
-            <Text style={[type.body3S, { color: TintsColors.MediumGray }]}>{username}</Text>
-            <Text style={[type.cap3XS, { color: TintsColors.MediumGray }]}>{restrictions}</Text>
+            <Text style={[type.heading4M, { color: TintsColors.MidGray }]}>{name}</Text>
+            <Text style={[type.body3S, { color: TintsColors.MidLightGray }]}>{username}</Text>
+            <Text style={[type.cap3XS, { color: TintsColors.MidLightGray }]}>{restrictions}</Text>
         </View>
       
     </View>

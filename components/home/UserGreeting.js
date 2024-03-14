@@ -6,7 +6,7 @@ import { spacing } from '../../settings/styles/Spacing'
 export default function UserGreeting() {
   return (
     <View>
-      <Text style={[type.heading2L, spacing.vert2x]}>Hi there!</Text>
+      <Text style={[type.heading2L, spacing.vert2x]}>Hi, Jane!</Text>
     </View>
   )
 }

@@ -3,11 +3,12 @@ import React from "react";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { PrimaryColors, TintsColors } from "../../settings/styles/Colors";
 import { type } from "../../settings/styles/Typography";
+import { spacing } from "../../settings/styles/Spacing";
 
 export default function SearchTabBtn({ navigation }) {
   return (
     <TouchableOpacity
-      style={styles.container}
+      style={[styles.container, spacing.vert3x]}
       onPress={() => navigation.navigate("SearchTabGroup")}
     >
       <Ionicons name="search" color={PrimaryColors.Green} size={20} />

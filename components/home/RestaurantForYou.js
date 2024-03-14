@@ -8,8 +8,13 @@ import {
   ScrollView,
 } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native";
-import { PrimaryColors } from "../../settings/styles/Colors";
+import { PrimaryColors, SecondaryColors, TintsColors } from "../../settings/styles/Colors";
 import { useData } from "../DataContext";
+
+import GlobalStyles from "../../settings/styles/GlobalStyle";
+import { spacing } from "../../settings/styles/Spacing";
+import Pill from "../../settings/Pill";
+import DietaryIcons from "../../assets/DietaryIcons";
 
  const YELP_API_KEY ="DaWbOrSWK54qhbQSXVUzcYTsEunAKnfwJ3i4NA8F4oVSSbUdvK5aDF4_xKpSh7fCO63rAVHvuQqEk6V7R3mTFg0y9Q5MiC4hSGEs7AdsE88FTfM7NFlzL73weZQ3ZXYx";
 
@@ -68,8 +73,8 @@ export default function RestaurantForYou({ props }) {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <View>
-        <Text style={type.heading2L}>Restaurant For You</Text>
-        <Text style={type.body1M}>
+        <Text style={type.heading2L}>Restaurants For You</Text>
+        <Text style={[type.body1M, spacing.vert2x]}>
           Carefully selected based on your restrictions
         </Text>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
@@ -122,7 +127,7 @@ const RestaurantImage = (props) => (
         uri: props.image,
       }}
       style={{
-        width: 240,
+        width: 265,
         height: 155,
         position: "relative",
         borderTopRightRadius: 4,
@@ -132,8 +137,8 @@ const RestaurantImage = (props) => (
     <TouchableOpacity
       style={{
         position: "absolute",
-        right: 20,
-        top: 20,
+        right: 8,
+        top: 8,
       }}
     >
       <MaterialCommunityIcons name="heart-outline" size={25} color="#fff" />
@@ -144,96 +149,152 @@ const RestaurantImage = (props) => (
 const RestaurantInfo = (props) => (
   <View
     style={{
-      flexDirection: "row",
-      justifyContent: "space-between",
-      alignItem: "Center",
+      // flexDirection: "column",
+      // justifyContent: "space-between",
       padding: 8,
+      // alignItems: 'flex-start',
       // backgroundColor:'white',
-      borderBottomLeftRadius: 4,
-      borderBottomRightRadius: 4,
-    }}
-  >
-    <View style={{ gap: 0 }}>
-      <Text style={type.heading3M}>{props.name}</Text>
-      <View
-        style={{
-          flexDirection: "row",
-          gap: 4,
-          alignItems: "center",
-        }}
-      >
+      // borderBottomLeftRadius: 4,
+      // borderBottomRightRadius: 4,
+    }}>
+  
+  <Text style={type.heading3M}>{props.name}</Text>
+    <View style={[spacing.vert1x, {flexDirection: 'row', gap: 4, alignItems: 'center',}]}>
         <Ionicons name="location-sharp" size={16} color={PrimaryColors.Green} />
         <Text style={type.body2S}>1 mi </Text>
-        <Ionicons name="star" size={16} color={"#FECA72"} />
+        <Ionicons name="star" size={16} color={SecondaryColors.BrightYellow} />
         <Text style={type.body2S}>{props.rating} </Text>
-      </View>
+    </View>
+
+    <Text style={[type.heading5S, spacing.vert1x]}>Dietary-friendly options include:</Text>
+
+    <View style={{
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        maxWidth: 240,
+        }}>
+
+      {/* Pills are hard-coded right now with arbitrary names and icons assigned */}
+      <Pill
+        style={[spacing.vert1x, { marginRight: 8 }]}
+        size="small" // Specify the size: 'small' or 'large'
+        type="inactive" // Specify the type: 'active' or 'inactive'
+        dietaryType="allergy" // Specify the dietary type: 'allergy' or 'diet'
+        text="Dairy" // Specify the text to display in the pill
+        icon={DietaryIcons.DairySolid} // Pass the icon component or source if needed
+      />
+
+      <Pill
+        style={[spacing.vert1x, { marginRight: 8 }]}
+        size="small" // Specify the size: 'small' or 'large'
+        type="inactive" // Specify the type: 'active' or 'inactive'
+        dietaryType="allergy" // Specify the dietary type: 'allergy' or 'diet'
+        text="Sesame" // Specify the text to display in the pill
+        icon={DietaryIcons.SesameSolid} // Pass the icon component or source if needed
+      />
+
+      <Pill
+        style={[spacing.vert1x, { marginRight: 8 }]}
+        size="small" // Specify the size: 'small' or 'large'
+        type="inactive" // Specify the type: 'active' or 'inactive'
+        dietaryType="allergy" // Specify the dietary type: 'allergy' or 'diet'
+        text="Egg" // Specify the text to display in the pill
+        icon={DietaryIcons.EggSolid} // Pass the icon component or source if needed
+      />
+
+      <Pill
+        style={[spacing.vert1x, { marginRight: 8 }]}
+        size="small" // Specify the size: 'small' or 'large'
+        type="inactive" // Specify the type: 'active' or 'inactive'
+        dietaryType="diet" // Specify the dietary type: 'allergy' or 'diet'
+        text="Vegan" // Specify the text to display in the pill
+        icon={DietaryIcons.VeganSolid} // Pass the icon component or source if needed
+      />
+
+    {/* This is the button for the +4 or whatever the number is in the event of overflow but there is no logic applied right now*/}
+    <View style={[GlobalStyles.radius25x, { borderWidth: 1, borderColor: TintsColors.MidLightGray, width: 36, height: 36, justifyContent: 'center', alignItems: 'center' }]}>
+      <Text style={[type.body2S, { color: TintsColors.MidLightGray }]}>+4</Text>
+    </View>
+
     </View>
   </View>
 );
 
-const RestaurantDietInfo = () => {
-  <View>
-    <View
-      style={{
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "center",
-        gap: 8,
-        borderColor: "#39735D",
-        borderWidth: 1,
-        borderRadius: 25,
-        backgroundColor: "white",
-        padding: 8,
-        margin: 4,
-      }}
-    >
-      <Ionicons name="egg" size={12} color={"#FECA72"} />
-      <Text>egg</Text>
-    </View>
-    <View
-      style={{
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "center",
-        gap: 8,
-        borderColor: "#39735D",
-        // borderWidth: 1,
-        borderRadius: 25,
-        backgroundColor: "#39735D",
-        padding: 8,
-        margin: 4,
-      }}
-    >
-      <Text style={{ fontWeight: "700", color: "white" }}>Vegetarian</Text>
-    </View>
-    <View
-      style={{
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "center",
-        gap: 8,
-        borderColor: "#39735D",
-        // borderWidth: 1,
-        borderRadius: 25,
-        backgroundColor: "#C5D2EF",
-        padding: 8,
-        margin: 4,
-      }}
-    >
-      {/* <Image source={require("../../assets/icons/Dairy.png")}/><Text>Dairy</Text> */}
-    </View>
-  </View>;
-};
+// const RestaurantDietInfo = () => {
+//   <View>
+//     <View
+//       style={{
+//         flexDirection: "row",
+//         alignItems: "center",
+//         justifyContent: "center",
+//         gap: 8,
+//         borderColor: "#39735D",
+//         borderWidth: 1,
+//         borderRadius: 25,
+//         backgroundColor: "white",
+//         padding: 8,
+//         margin: 4,
+//       }}
+//     >
+//       <Ionicons name="egg" size={12} color={"#FECA72"} />
+//       <Text>egg</Text>
+//     </View>
+//     <View
+//       style={{
+//         flexDirection: "row",
+//         alignItems: "center",
+//         justifyContent: "center",
+//         gap: 8,
+//         borderColor: "#39735D",
+//         // borderWidth: 1,
+//         borderRadius: 25,
+//         backgroundColor: "#39735D",
+//         padding: 8,
+//         margin: 4,
+//       }}
+//     >
+//       <Text style={{ fontWeight: "700", color: "white" }}>Vegetarian</Text>
+//     </View>
+//     <View
+//       style={{
+//         flexDirection: "row",
+//         alignItems: "center",
+//         justifyContent: "center",
+//         gap: 8,
+//         borderColor: "#39735D",
+//         // borderWidth: 1,
+//         borderRadius: 25,
+//         backgroundColor: "#C5D2EF",
+//         padding: 8,
+//         margin: 4,
+//       }}
+//     >
+//       {/* <Image source={require("../../assets/icons/Dairy.png")}/><Text>Dairy</Text> */}
+//     </View>
+//   </View>;
+// };
 
 const styles = StyleSheet.create({
+  // card: {
+  //   elevation: 2,
+  //   shadowColor: "#000",
+  //   shadowOpacity: 1.15,
+  //   shadowRadius: 4,
+  //   shadowOffset: {
+  //     width: 2,
+  //     height: 2,
+  //   },
+  // },
+
   card: {
-    elevation: 2,
-    shadowColor: "#000",
-    shadowOpacity: 1.15,
+    backgroundColor: 'white',
+    ...GlobalStyles.radius1x,
+    shadowColor: 'rgba(0, 0, 0, 0.15)',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 1,
     shadowRadius: 4,
-    shadowOffset: {
-      width: 2,
-      height: 2,
-    },
+    elevation: 4,
+    ...spacing.vert3x
   },
+
 });

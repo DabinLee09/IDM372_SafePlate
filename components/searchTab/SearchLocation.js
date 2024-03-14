@@ -3,7 +3,7 @@ import React from 'react'
 
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
-import { PrimaryColors } from '../../settings/styles/Colors';
+import { PrimaryColors, TintsColors } from '../../settings/styles/Colors';
 import { useData } from '../DataContext';
 
 export default function SearchLocation() {
@@ -47,14 +47,14 @@ export default function SearchLocation() {
 
 const styles = StyleSheet.create({
     textInput: {
-        backgroundColor: '#F6F6F6',
+        backgroundColor: TintsColors.LightGray,
         borderRadius: 4,
         fontWeight: "400",
         marginVertical: 4,
         marginHorizontal: 4,
     },
     textInputContainer: {
-        backgroundColor: "#F6F6F6",
+        backgroundColor: TintsColors.LightGray,
         borderRadius: 4,
         flexDirection: "row",
         alignItems: "center",

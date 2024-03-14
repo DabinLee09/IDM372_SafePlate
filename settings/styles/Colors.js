@@ -16,11 +16,15 @@ export const SecondaryColors = {
   
 export const TintsColors = {
     White: '#FFFFFF',
-    CoolGray: '#F3F3F8',
-    WarmGray: '#FAF6F3',
     Platinum: '#E3E3E3',
-    MediumGray: '#737373',
+    LightGray: '#F6F6F6',
+    MidLightGray:'#676767',
+    MidGray: '#4A4A4A',
     DarkGray: '#343434',
-    SearchGray: '#F6F6F6',
-    MidGray: '#4A4A4A'
+    // CoolGray: '#F3F3F8',
+    // WarmGray: '#FAF6F3',
+    // MediumGray: '#737373',
+    // DarkGray: '#343434',
+    // SearchGray: '#F6F6F6',
+    // MidGray: '#4A4A4A'
 }

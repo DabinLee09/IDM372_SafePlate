@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet, TextInput } from "react-native";
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
-import { PrimaryColors } from "../../settings/styles/Colors";
+import { PrimaryColors, TintsColors } from "../../settings/styles/Colors";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { useData } from "../DataContext";
 
@@ -30,7 +30,7 @@ export default function FreeSearchBar() {
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    backgroundColor: "#F6F6F6",
+    backgroundColor: TintsColors.LightGray,
     alignItems: "center",
     justifyContent: "space-between",
     //   paddingVertical: 16,
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   input: {
-    backgroundColor: "#F6F6F6",
+    backgroundColor: TintsColors.LightGray,
   },
   searchBtn: {
     // backgroundColor: "pink",
