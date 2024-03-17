@@ -1,6 +1,9 @@
-import { View, Text, FlatList, Image } from "react-native";
+import { View, Text, FlatList, Image, Animated, StyleSheet, TouchableOpacity } from "react-native";
 import React, { useEffect } from "react";
 import { useData } from "../DataContext";
+
+
+
 
 const YELP_API_KEY =
   "DaWbOrSWK54qhbQSXVUzcYTsEunAKnfwJ3i4NA8F4oVSSbUdvK5aDF4_xKpSh7fCO63rAVHvuQqEk6V7R3mTFg0y9Q5MiC4hSGEs7AdsE88FTfM7NFlzL73weZQ3ZXYx";
@@ -8,13 +11,15 @@ const YELP_API_KEY2 =
   "_Q29t0DrMP00snaLSdvMM2T30atXUugJnLgh5P3uconst { city, restaurantData, setRestaurantData } = useData();lJ84hkGOW6t1jC_mlJtCO6lZnQ_pLZlxI1-U2WwZCsMaU7x9D8YFjmWKm4gXUxSvPCrKXFrPnMJTeIqiIcbsZXYx";
 
 export default function SearchFreeRestaurant() {
-  const {city, setRestaurantData, restaurantData} = useData()  
+  const {city, setRestaurantData, restaurantData, term} = useData()  
+
+  console.log("SearchFreeRestaurant term:", term)
 
   const limit = 2;
   const radius = 100;
 
   const getRestaurantsFromYelp = async () => {
-    const yelpUrl = `https://api.yelp.com/v3/businesses/search?term=restaurants&location=${city}&limit=${limit}&radius=${radius}`;
+    const yelpUrl = `https://api.yelp.com/v3/businesses/search?term=sandwich&location=${city}&limit=${limit}&radius=${radius}`;
 
     const apiOptions = {
       headers: {
@@ -67,6 +72,10 @@ export default function SearchFreeRestaurant() {
       ) : (
         <Text>No data found</Text>
       )}
+
+
+
+
     </View>
   );
 }

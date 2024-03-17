@@ -11,7 +11,8 @@ import { useNavigation } from "@react-navigation/native";
 import { PrimaryColors } from "../../settings/styles/Colors";
 import { useData } from "../DataContext";
 
- const YELP_API_KEY ="DaWbOrSWK54qhbQSXVUzcYTsEunAKnfwJ3i4NA8F4oVSSbUdvK5aDF4_xKpSh7fCO63rAVHvuQqEk6V7R3mTFg0y9Q5MiC4hSGEs7AdsE88FTfM7NFlzL73weZQ3ZXYx";
+const YELP_API_KEY =
+  "DaWbOrSWK54qhbQSXVUzcYTsEunAKnfwJ3i4NA8F4oVSSbUdvK5aDF4_xKpSh7fCO63rAVHvuQqEk6V7R3mTFg0y9Q5MiC4hSGEs7AdsE88FTfM7NFlzL73weZQ3ZXYx";
 
 const YELP_API_KEY2 =
   "_Q29t0DrMP00snaLSdvMM2T30atXUugJnLgh5P3ulJ84hkGOW6t1jC_mlJtCO6lZnQ_pLZlxI1-U2WwZCsMaU7x9D8YFjmWKm4gXUxSvPCrKXFrPnMJTeIqiIcbsZXYx";
@@ -36,7 +37,7 @@ export default function RestaurantForYou({ props }) {
       const res = await fetch(yelpUrl, apiOptions);
       const json = await res.json();
       if (!res.ok) {
-        console.error('HTTP Error:', res.status, json);
+        console.error("HTTP Error:", res.status, json);
         return; // Exit if there's an HTTP error (status code 4xx or 5xx)
       }
       // setRestaurantData(json.businesses.filter((business) => business.transactions.includes(activeTab.toLowerCase())));
@@ -56,6 +57,7 @@ export default function RestaurantForYou({ props }) {
           distance: restaurant.distance,
         }))
       );
+      // console.log("RestaurantForYou:",restaurantData )
     } catch (error) {
       console.error("Error fetching data from Yelp:", error);
     }
@@ -68,6 +70,7 @@ export default function RestaurantForYou({ props }) {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <View>
+        {/* Titles */}
         <Text style={type.heading2L}>Restaurant For You</Text>
         <Text style={type.body1M}>
           Carefully selected based on your restrictions
@@ -83,9 +86,9 @@ export default function RestaurantForYou({ props }) {
                     onPress={() =>
                       navigation.navigate("RestaurantDetail", {
                         name: restaurant.name,
-                        image: restaurant.image_url,
+                        image: restaurant.image,
                         price: restaurant.price,
-                        reviews: restaurant.review_count,
+                        reviews: restaurant.reviews,
                         rating: restaurant.rating,
                         categories: restaurant.categories,
                         is_closed: restaurant.is_closed,
@@ -97,12 +100,16 @@ export default function RestaurantForYou({ props }) {
                   >
                     <RestaurantImage image={restaurant.image} />
                   </TouchableOpacity>
+
                   <TouchableOpacity>
                     <RestaurantInfo
                       name={restaurant.name}
                       rating={restaurant.rating}
                     />
+                    <RestaurantDietInfo />
                   </TouchableOpacity>
+                  
+                  <RestaurantDietInfo />
                 </View>
               </View>
             ))
@@ -173,55 +180,7 @@ const RestaurantInfo = (props) => (
 
 const RestaurantDietInfo = () => {
   <View>
-    <View
-      style={{
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "center",
-        gap: 8,
-        borderColor: "#39735D",
-        borderWidth: 1,
-        borderRadius: 25,
-        backgroundColor: "white",
-        padding: 8,
-        margin: 4,
-      }}
-    >
-      <Ionicons name="egg" size={12} color={"#FECA72"} />
-      <Text>egg</Text>
-    </View>
-    <View
-      style={{
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "center",
-        gap: 8,
-        borderColor: "#39735D",
-        // borderWidth: 1,
-        borderRadius: 25,
-        backgroundColor: "#39735D",
-        padding: 8,
-        margin: 4,
-      }}
-    >
-      <Text style={{ fontWeight: "700", color: "white" }}>Vegetarian</Text>
-    </View>
-    <View
-      style={{
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "center",
-        gap: 8,
-        borderColor: "#39735D",
-        // borderWidth: 1,
-        borderRadius: 25,
-        backgroundColor: "#C5D2EF",
-        padding: 8,
-        margin: 4,
-      }}
-    >
-      {/* <Image source={require("../../assets/icons/Dairy.png")}/><Text>Dairy</Text> */}
-    </View>
+    <Text>Restriction Pills</Text>
   </View>;
 };
 

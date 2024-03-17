@@ -2,10 +2,11 @@ import { View, Text, SafeAreaView, Button, ScrollView, StyleSheet } from 'react-
 import React, { useState } from 'react'
 import UserGreeting from '../components/home/UserGreeting'
 import SearchTabBtn from '../components/home/SearchTabBtn'
-import UserLocation from '../components/home/UserLocation';
+
 import RestaurantForYou from '../components/home/RestaurantForYou';
 import SearchRestaurant from '../components/searchTab/SearchRestaurant';
 import { useData } from '../components/DataContext';
+import UserLocation from '../components/home/UserLocation';
 
 
 export default function Home({navigation}) {

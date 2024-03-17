@@ -1,10 +1,11 @@
-import { View, Text } from 'react-native'
+import { View, Text, ScrollView } from 'react-native'
 import React from 'react'
+import About from '../components/restaurantDetail/About'
 
-export default function RestaurantDetail() {
+export default function RestaurantDetail({ route }) {
   return (
-    <View>
-      <Text>RestaurantDetail</Text>
-    </View>
+    <ScrollView style={{ backgroundColor: 'white' }} >
+      <About route={route} />
+    </ScrollView>
   )
 }

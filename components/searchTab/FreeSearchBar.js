@@ -4,23 +4,37 @@ import { Ionicons } from "@expo/vector-icons";
 import { PrimaryColors } from "../../settings/styles/Colors";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { useData } from "../DataContext";
+import { useNavigation } from "@react-navigation/native";
+import SearchFreeRestaurant from "./SearchFreeRestaurant";
 
 export default function FreeSearchBar() {
-  const [text, onChangeText] = React.useState("");
+  const [text, setText] = React.useState("");
   const { term, setTerm } = useData();
+  const navigation = useNavigation();
+
+  const handleSearch = async () => {
+    setTerm(text); // Save the search term
+    // Navigate to the "RestaurantList" screen
+    navigation.navigate("RestaurantList");
+  };
 
 
-  console.log("text: ", text);
-  console.log("term:", term)
+  console.log("FreeSearchBar text: ", text);
+  console.log("FreeSearchBar term:", term);
   return (
     <View style={styles.container}>
       <TextInput
         style={styles.input}
-        onChangeText={onChangeText}
-        value={text}
+        onChangeText={setText}
+        defaultValue={text}
         placeholder="Restaurants, Food, Drinks, etc"
+        enterKeyHint="search"
+        selectionColor={PrimaryColors.Green}
       />
-      <TouchableOpacity style={styles.searchBtn} onPress={()=> setTerm(text)}>
+      <TouchableOpacity
+        style={styles.searchBtn}
+        onPress={handleSearch}
+      >
         <Ionicons name="search" color={PrimaryColors.Green} size={20} />
       </TouchableOpacity>
     </View>
@@ -41,6 +55,9 @@ const styles = StyleSheet.create({
   },
   input: {
     backgroundColor: "#F6F6F6",
+    paddingLeft: 16,
+    borderRadius: 4,
+
   },
   searchBtn: {
     // backgroundColor: "pink",
