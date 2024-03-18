@@ -8,10 +8,11 @@ import { spacing } from '../../settings/styles/Spacing';
 import { Ionicons } from '@expo/vector-icons';
 import { Button } from 'react-native-paper';
 
-export default function Reviews(props) {
+export default function Reviews() {
     console.log('Rendering Reviews component');
     
     return (
+      // <View>
       <ScrollView style={styles.container}>
         <Text style={styles.title}>Recommended Reviews</Text>
 
@@ -51,9 +52,22 @@ export default function Reviews(props) {
             </View>
         </View>
 
-        <View style={{flexDirection: 'row', paddingVertical: 16, borderTopWidth: 1, borderBottomWidth: 1, borderColor: TintsColors.Platinum}}>
-            <Image style={styles.avatar} source={require('../../assets/images/avatars/avt-1.png')}></Image>
+        <View style={{flexDirection: 'row', marginVertical: 16}}>
+          <Button title="Sort By" buttonColor={TintsColors.LightGray} textColor={PrimaryColors.Green} style={[styles.buttonRnd,{marginRight: 8} ]}>
+            <Text style={styles.buttonRndText}>Sort By </Text>
+            <Ionicons name="caret-down-outline" color={PrimaryColors.Green} />
+          </Button>
 
+          <Button title="Filter" buttonColor={TintsColors.LightGray} textColor={PrimaryColors.Green} style={styles.buttonRnd}>
+            <Text style={styles.buttonRndText}>Filter </Text>
+            <Ionicons name="filter"  color={PrimaryColors.Green}/>
+          </Button>
+        </View>
+
+
+      {/* dummy user reviews here */}
+        <View style={{flexDirection: 'row', paddingVertical: 16, borderBottomWidth: 1, borderColor: TintsColors.Platinum}}>
+            <Image style={styles.avatar} source={require('../../assets/images/avatars/avt-1.png')}></Image>
             <View style={{flexDirection: 'column'}}>
               <Text style={styles.label}>Clara H.</Text>
               <View style={styles.starRow}>
@@ -63,14 +77,41 @@ export default function Reviews(props) {
                 <Ionicons name="star" size={24} style={{ color: SecondaryColors.BrightYellow }} />
                 <Ionicons name="star" size={24} style={{ color: SecondaryColors.BrightYellow }} />
               </View>
-
               <Text style={[type.body2S, {marginTop: 8}]}>The food was cooked to perfection. The {"\n"}waiter was very accommodating with my{"\n"} diet! :) </Text>
-
             </View>
         </View>
 
+        <View style={{flexDirection: 'row', paddingVertical: 16, borderBottomWidth: 1, borderColor: TintsColors.Platinum}}>
+            <Image style={styles.avatar} source={require('../../assets/images/avatars/avt-2.png')}></Image>
+            <View style={{flexDirection: 'column'}}>
+              <Text style={styles.label}>Tom M.</Text>
+              <View style={styles.starRow}>
+                <Ionicons name="star" size={24} style={{ color: SecondaryColors.BrightYellow }} />
+                <Ionicons name="star" size={24} style={{ color: SecondaryColors.BrightYellow }} />
+                <Ionicons name="star" size={24} style={{ color: SecondaryColors.BrightYellow }} />
+                <Ionicons name="star" size={24} style={{ color: SecondaryColors.BrightYellow }} />
+                <Ionicons name="star-half" size={24} style={{ color: SecondaryColors.BrightYellow }} />
+              </View>
+              <Text style={[type.body2S, {marginTop: 8}]}>The restaurant had a specific section for {"\n"} Vegan food. Love their Caprese skewers!“  </Text>
+            </View>
+        </View>
 
-        
+        <View style={{flexDirection: 'row', paddingVertical: 16, borderBottomWidth: 1, borderColor: TintsColors.Platinum}}>
+            <Image style={styles.avatar} source={require('../../assets/images/avatars/avt-4.png')}></Image>
+            <View style={{flexDirection: 'column'}}>
+              <Text style={styles.label}>Cherl V.</Text>
+              <View style={styles.starRow}>
+                <Ionicons name="star" size={24} style={{ color: SecondaryColors.BrightYellow }} />
+                <Ionicons name="star" size={24} style={{ color: SecondaryColors.BrightYellow }} />
+                <Ionicons name="star" size={24} style={{ color: SecondaryColors.BrightYellow }} />
+                <Ionicons name="star-outline" size={24} style={{ color: SecondaryColors.BrightYellow }} />
+                <Ionicons name="star-outline" size={24} style={{ color: SecondaryColors.BrightYellow }} />
+              </View>
+              <Text style={[type.body2S, {marginTop: 8}]}>I wish they had more food options. I could {"\n"} only order a salad or sides but everyone {"\n"} else's food looked delicious.</Text>
+            </View>
+        </View>
+         
+        {/* </View> */}
       </ScrollView>
     );
   }
@@ -79,6 +120,7 @@ export default function Reviews(props) {
    container: {
     padding: 16,
     flex: 1,
+    marginBottom: 24,
    },
    
     title: {
@@ -136,6 +178,18 @@ export default function Reviews(props) {
 
     buttonText: {
       ...type.heading5S,
-      color: 'white'
+    },
+
+    buttonRnd: {
+      flexDirection: 'row',
+      justifyContent: 'center', 
+      alignItems: 'center', 
+      borderRadius: 4,
+      // marginTop: 8,
+      borderRadius: 200,
+    },
+
+    buttonRndText: {
+      ...type.body2S,
     },
   });
