@@ -17,6 +17,7 @@ import { PrimaryColors } from './settings/styles/Colors';
 import RestaurantList from './screens/RestaurantList';
 import { DataProvider } from './components/DataContext';
 
+import CuratedGuide from './screens/CuratedGuide';
 
 
 //SearchTab
@@ -64,6 +65,7 @@ function HomeStackGroup({navigation, route}) {
       <HomeStack.Group>
         <HomeStack.Screen name='Home' component={Home} />
         <HomeStack.Screen name='RestaurantDetail' component={RestaurantDetail} initialParams={{ navigation,}}/>
+        <HomeStack.Screen name="CuratedGuide" component={CuratedGuide} />
         <HomeStack.Screen name='SearchTabDefault' component={SearchTabDefault} initialParams={{ navigation,}}/>
         <HomeStack.Screen name='RestaurantList' component={RestaurantList} initialParams={{ navigation,}} />
       </HomeStack.Group>
