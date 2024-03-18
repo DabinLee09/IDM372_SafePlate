@@ -40,7 +40,7 @@ export default function RestaurantDetail({ route }) {
       case 'info':
         return <Info />;
       case 'reviews':
-        return <Reviews />;
+        return <Reviews/>;
       default:
         return null;
     }
@@ -60,8 +60,7 @@ export default function RestaurantDetail({ route }) {
 
   return (
     <View style={{ flex: 1, backgroundColor: 'white' }}>
-      
-        <About route={route} />
+        {/* <About route={route} /> */}
 
         <TabView
         navigationState={{ index, routes }}
@@ -69,7 +68,6 @@ export default function RestaurantDetail({ route }) {
         onIndexChange={setIndex}
         renderTabBar={renderTabBar}
       />
-
     </View>
   );
 }
