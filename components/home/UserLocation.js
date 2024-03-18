@@ -8,7 +8,7 @@ import { spacing } from "../../settings/styles/Spacing";
 export default function UserLocation({cityHandler, city}) {
     console.log("UserLocation: ",city)
   return (
-    <View style={[styles.container, spacing.vert3x]}>
+    <View style={[styles.container, spacing.vert2x]}>
       <Ionicons name="location-sharp" size={24} color={PrimaryColors.Green} />
       <Text style={[type.heading3M, {color: PrimaryColors.Green}]}>{city}</Text>
       <Ionicons name="caret-down-outline" size={24} color={PrimaryColors.Green} />

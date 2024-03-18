@@ -235,6 +235,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 1,
     shadowRadius: 4,
     elevation: 4,
-    ...spacing.vert3x
+    ...spacing.vert2x
   },
 });
