@@ -25,8 +25,8 @@ export default function About(props) {
 
   return (
     <View>
-      <RestaurantImage image={image} />
-      <View style={[{ paddingHorizontal: 16, gap: 24 }]}>
+      <RestaurantImage image={image}/>
+      <View style={[{ paddingHorizontal: 16, gap: 24, marginTop: 24 }]}>
         <View>
           <RestaurantTitle name={name} />
           <RestaurantDescription description={description} />
