@@ -16,6 +16,7 @@ export const DataProvider = ({ children }) => {
   const [filter, setFilter] = useState([]);
   const [select, setSelect] = useState("inactive");
   const [selectedItems, setSelectedItems] = useState([]);
+  const [buddyPick, setBuddyPick] = useState();
 
   const [selectedRestriction, setSelectedRestriction] = useState([]);
 
@@ -40,14 +41,14 @@ export const DataProvider = ({ children }) => {
       restrictions: '',
     },
     {
-      name: "Emily",
+      name: "Dabin",
       username: "@emilysmith",
       image: require("../assets/images/avatars/avt-1.png"),
       restrictions: '',
     },
     {
-      name:"Cheryl",
-      username:"@cheryl123",
+      name:"Cindy",
+      username:"@cindyl123",
       image: require("../assets/images/avatars/avt-4.png"),
       restrictions: '',
     },
@@ -64,8 +65,8 @@ export const DataProvider = ({ children }) => {
       restrictions: '',
     },
     {
-      name: "Emily",
-      username: "@emilysmith",
+      name: "",
+      username: "",
       image: require("../assets/images/avatars/avt-1.png"),
       restrictions: '',
     },
@@ -158,6 +159,38 @@ export const DataProvider = ({ children }) => {
   //   setInternalRestaurantData(data);
   // };
 
+
+  // Function to filter items from dietArr and allergyArr based on selectedRestriction
+const getFilteredItems = (selectedRestriction) => {
+  // Initialize an empty array to store filtered items
+  const filteredItems = [];
+
+  // Iterate through each item in selectedRestriction
+  selectedRestriction.forEach((restriction) => {
+      // Find matching items from dietArr and allergyArr
+      const dietItem = dietArr.find((item) => item.name === restriction);
+      const allergyItem = allergyArr.find((item) => item.name === restriction);
+
+      // If a matching item is found in dietArr, push it to filteredItems
+      if (dietItem) {
+          filteredItems.push(dietItem);
+      }
+
+      // If a matching item is found in allergyArr, push it to filteredItems
+      if (allergyItem) {
+          filteredItems.push(allergyItem);
+      }
+  });
+
+  return filteredItems;
+};
+
+// Call the function to get the filtered items
+const filteredItems = getFilteredItems(selectedRestriction);
+
+
+
+
   return (
     <DataContext.Provider
       value={{
@@ -178,9 +211,11 @@ export const DataProvider = ({ children }) => {
         select, setSelect,
         selectedItems, setSelectedItems,
         selectedRestriction, setSelectedRestriction,
+        buddyPick, setBuddyPick,
         allergyArr,
         dietArr,
         buddiesInfoArr,
+        filteredItems,
         
       }}
     >

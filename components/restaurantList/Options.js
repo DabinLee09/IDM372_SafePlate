@@ -1,8 +1,10 @@
 import { View, Text, Image, StyleSheet } from "react-native";
 import React from "react";
 import { Divider } from '@rneui/themed';
+import { useData } from "../DataContext";
 
 export default function Options() {
+  const {selectedRestriction} = useData();
   return (
     <View style={styles.container}>
       <View style={styles.btn}>
@@ -18,7 +20,7 @@ export default function Options() {
           source={require("../../assets/images/avatars/restricIcon.png")}
           style={{ width: 32, height: 32 }}
         />
-        <Text>5 restrictions</Text>
+        <Text>{selectedRestriction.length} restrictions</Text>
       </View>
     </View>
   );

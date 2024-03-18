@@ -1,24 +1,30 @@
 import { View, Text, TouchableOpacity, FlatList } from "react-native";
-import React, { useState } from "react";
+import React from "react";
 import Pill from "../../settings/Pill";
 import { useData } from "../DataContext";
 import { PrimaryColors } from "../../settings/styles/Colors";
 
 export default function AllergySelect() {
-  const { allergyArr, } = useData();
-  const [selectedItems, setSelectedItems] = useState([]);
+  const { allergyArr, selectedRestriction, setSelectedRestriction } = useData();
 
   const toggleSelect = (index) => {
-    const newArr = [...allergyArr];
-    newArr[index].type = newArr[index].type === "active" ? "inactive" : "active";
-    const newSelectedItems = newArr.filter((item) => item.type === "active");
-    // setSelectedItems(newSelectedItems);
-    setSelectedItems(newSelectedItems);
+    // Determine if the current item is selected
+    const isItemSelected = selectedRestriction.includes(allergyArr[index].name);
+    let newSelectedRestriction;
+
+    if (isItemSelected) {
+      // Item is currently selected, so remove it
+      newSelectedRestriction = selectedRestriction.filter(itemName => itemName !== allergyArr[index].name);
+    } else {
+      // Item is not selected, so add it
+      newSelectedRestriction = [...selectedRestriction, allergyArr[index].name];
+    }
+
+    // Update the global state
+    setSelectedRestriction(newSelectedRestriction);
   };
 
-
-
-  return ( 
+  return (
     <View>
       <Text>AllergySelect</Text>
       <FlatList
@@ -39,7 +45,7 @@ export default function AllergySelect() {
           >
             <Pill
               size="large"
-              type={item.type}
+              type={selectedRestriction.includes(item.name) ? "active" : "inactive"}
               dietaryType={item.dietaryType}
               text={item.name}
               icon={item.icon}
@@ -50,10 +56,10 @@ export default function AllergySelect() {
         numColumns={2}
         keyExtractor={(item, index) => index.toString()}
       />
-      <Text>Selected: {selectedItems.length}</Text>
+      <Text>Selected: {selectedRestriction.length}</Text>
       <Text>
-        {selectedItems.map((item, index) => (
-          <Text key={index}>{item.name}, </Text>
+        {selectedRestriction.map((name, index) => (
+          <Text key={index}>{name}, </Text>
         ))}
       </Text>
     </View>

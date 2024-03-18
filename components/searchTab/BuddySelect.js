@@ -5,6 +5,10 @@ import { useData } from "../DataContext";
 export default function BuddySelect() {
   const { buddiesInfoArr } = useData();
 
+  const buddyPicker = () => {
+  }
+
+  
   return (
     <View>
       <Text>BuddySelect</Text>
@@ -25,6 +29,7 @@ export default function BuddySelect() {
                 alignItems: "center",
                 marginBottom: 8,
               }}
+              onPress={()=> buddyPicker()}
             >
               <Image
                 source={item.image}
