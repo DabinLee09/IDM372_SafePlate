@@ -75,7 +75,7 @@ export default function RestaurantForYou({ props }) {
     <GestureHandlerRootView style={{ flex: 1 }}>
       <View>
         {/* Titles */}
-        <Text style={type.heading2L}>Restaurants For You</Text>
+        <Text style={[type.heading2L, {marginTop: 24}]}>Restaurants For You</Text>
         <Text style={[type.body1M, spacing.vert2x]}>
           Carefully selected based on your restrictions
         </Text>
