@@ -1,35 +1,40 @@
-import { View, Text } from 'react-native'
-import React from 'react'
-import { FlatList } from 'react-native-gesture-handler'
-import { TouchableOpacity } from 'react-native-web'
-import { useData } from '../DataContext';
+import React from "react";
+import { View, Text, FlatList, TouchableOpacity, Image } from "react-native";
+import { useData } from "../DataContext";
 
 export default function BuddySelect() {
-    const { BuddySelect } = useData();
+  const { buddiesInfoArr } = useData();
+
   return (
     <View>
       <Text>BuddySelect</Text>
       <FlatList
         data={buddiesInfoArr}
         renderItem={({ item, index }) => (
-          <TouchableOpacity
-            key={index}
-            style={{
-              backgroundColor: "pink",
-              marginRight: 8,
-              marginBottom: 8,
-              borderRadius: 100,
-              justifyContent: "center",
-              alignItems: "center",
-              height: 48,
-            }}
-          >
-          </TouchableOpacity>
+          <View style={{ alignItems: "center", backgroundColor: "pink", marginRight: 8, width: 60,}}>
+            <TouchableOpacity
+              key={index}
+              style={{
+                alignItems: "center",
+                marginBottom:8,
+              }}
+            >
+              <Image
+                source={item.image}
+                style={{
+                  width: 60,
+                  height: 60,
+                  borderRadius: 30,
+                }}
+              /></TouchableOpacity>
+              <Text>{item.name}</Text>
+            
+          </View>
         )}
-        contentContainerStyle={{ margin: 4 }}
-        numColumns={2}
+        contentContainerStyle={{ padding: 8 }}
+        // numColumns={2} // Display four items in one row
         keyExtractor={(item, index) => index.toString()}
       />
     </View>
-  )
+  );
 }

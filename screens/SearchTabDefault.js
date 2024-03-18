@@ -92,7 +92,7 @@ export default function SearchTabDefault() {
             <>
               <Text style={styles.cardHeader}>Who</Text>
               <Text style={styles.cardSub}>Im flexible</Text>
-              <Animated.View style={styles.cardBody}>
+              <Animated.View>
                 <BuddySelect />
               </Animated.View>
             </>

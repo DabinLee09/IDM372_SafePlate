@@ -20,9 +20,9 @@ export const DataProvider = ({ children }) => {
   const [selectedRestriction, setSelectedRestriction] = useState([]);
 
 
-  const buddiesInfo = [
+  const buddiesInfoArr = [
     {
-      name: "Emily Smith",
+      name: "Emily",
       username: "@emilysmith",
       image: require("../assets/images/avatars/avt-1.png"),
       restrictions: '',
@@ -40,7 +40,7 @@ export const DataProvider = ({ children }) => {
       restrictions: '',
     },
     {
-      name: "Emily Smith",
+      name: "Emily",
       username: "@emilysmith",
       image: require("../assets/images/avatars/avt-1.png"),
       restrictions: '',
@@ -52,7 +52,7 @@ export const DataProvider = ({ children }) => {
       restrictions: '',
     },
     {
-      name: "Emily Smith",
+      name: "Emily",
       username: "@emilysmith",
       image: require("../assets/images/avatars/avt-1.png"),
       restrictions: '',
@@ -167,7 +167,8 @@ export const DataProvider = ({ children }) => {
         selectedItems, setSelectedItems,
         selectedRestriction, setSelectedRestriction,
         allergyArr,
-        dietArr
+        dietArr,
+        buddiesInfoArr,
         
       }}
     >

@@ -18,7 +18,7 @@ export default function AllergySelect() {
 
 
 
-  return (
+  return ( 
     <View>
       <Text>AllergySelect</Text>
       <FlatList
