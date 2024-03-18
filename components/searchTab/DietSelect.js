@@ -4,7 +4,7 @@ import Pill from "../../settings/Pill";
 import { useData } from "../DataContext";
 import { PrimaryColors } from "../../settings/styles/Colors";
 
-export default function AllergySelect() {
+export default function DietSelect() {
   const { dietArr, selectedRestriction, setSelectedRestriction} = useData();
   const [selectedItems, setSelectedItems] = useState([]);
 
@@ -12,21 +12,14 @@ export default function AllergySelect() {
     const newArr = [...dietArr];
     newArr[index].type = newArr[index].type === "active" ? "inactive" : "active";
     const newSelectedItems = newArr.filter((item) => item.type === "active");
+    // updateSelectedItems(newSelectedItems);
     setSelectedItems(newSelectedItems);
-    // updateSelectedRestriction(newSelectedItems);
   };
 
-  const updateSelectedRestriction = (newSelectedItems) => {
-    if (newSelectedItems) { // Ensure newSelectedItems is defined
-      setSelectedRestriction([...selectedRestriction, ...newSelectedItems]);
-    }
-  };
-  
-  
 
   return (
     <View>
-      <Text>AllergySelect</Text>
+      <Text>DietSelect</Text>
       <FlatList
         data={dietArr}
         renderItem={({ item, index }) => (
@@ -59,18 +52,10 @@ export default function AllergySelect() {
       <Text>Selected: {selectedItems.length}</Text>
       <Text>
         {selectedItems.map((item, index) => (
-            <>
-          <Text key={index}>{item.name}, </Text>
-          <Text key={index}>{item.type}, </Text>
-          </>
-        ))}
-      </Text>
-      <Text>Selected: {selectedRestriction.length}</Text>
-      <Text>
-        {selectedRestriction.map((item, index) => (
           <Text key={index}>{item.name}, </Text>
         ))}
       </Text>
+     
     </View>
   );
 }

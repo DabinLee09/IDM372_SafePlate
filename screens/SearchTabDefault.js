@@ -18,6 +18,7 @@ import { useNavigation } from "@react-navigation/native";
 import AllergySelect from "../components/searchTab/AllergySelect";
 import DietSelect from "../components/searchTab/DietSelect";
 import { spacing } from "../settings/styles/Spacing";
+import BuddySelect from "../components/searchTab/BuddySelect";
 
 export default function SearchTabDefault() {
   const navigation = useNavigation();
@@ -38,10 +39,30 @@ export default function SearchTabDefault() {
 
   const { setCity } = useData();
 
-  const [selectedItems, setSelectedItems] = useState([]);
+  // const [selectedItems, setSelectedItems] = useState([]);
 
-  const updateSelectedItems = (newItem) => {
-    setSelectedItems((prevItems) => [...prevItems, newItem]);
+  // const updateSelectedItems = (newItem) => {
+  //   setSelectedItems((prevItems) => [...prevItems, newItem]);
+  // };
+
+  //What
+  //What
+  const { setSelectedRestriction } = useData();
+  const [selectedDietItems, setSelectedDietItems] = useState([]);
+  const [selectedAllergyItems, setSelectedAllergyItems] = useState([]);
+
+  const handleDietSelectUpdate = (selectedItems) => {
+    setSelectedDietItems(selectedItems);
+    updateSelectedRestriction([...selectedItems, ...selectedAllergyItems]);
+  };
+
+  const handleAllergySelectUpdate = (selectedItems) => {
+    setSelectedAllergyItems(selectedItems);
+    updateSelectedRestriction([...selectedDietItems, ...selectedItems]);
+  };
+
+  const updateSelectedRestriction = (selectedRestriction) => {
+    setSelectedRestriction(selectedRestriction);
   };
 
   return (
@@ -71,7 +92,9 @@ export default function SearchTabDefault() {
             <>
               <Text style={styles.cardHeader}>Who</Text>
               <Text style={styles.cardSub}>Im flexible</Text>
-              <Animated.View style={styles.cardBody}></Animated.View>
+              <Animated.View style={styles.cardBody}>
+                <BuddySelect />
+              </Animated.View>
             </>
           )}
         </View>
@@ -99,22 +122,13 @@ export default function SearchTabDefault() {
           {openCard === 1 && (
             <>
               <Text style={styles.cardHeader}>What</Text>
-              <Text style={styles.cardSub}>Im flexible</Text>
+              {/* <Text style={styles.cardSub}>Im flexible</Text> */}
               <Animated.View>
                 <AllergySelect
-                  selectedItems={selectedItems}
-                  updateSelectedItems={updateSelectedItems}
+                  updateSelectedItems={handleAllergySelectUpdate}
                 />
-                <DietSelect
-                  selectedItems={selectedItems}
-                  updateSelectedItems={updateSelectedItems}
-                />
-                <Text>Selected: {selectedItems.length}</Text>
-                <Text>
-                  {selectedItems.map((item, index) => (
-                    <Text key={index}>{item.name}, </Text>
-                  ))}
-                </Text>
+                <DietSelect updateSelectedItems={handleDietSelectUpdate} />
+                
               </Animated.View>
             </>
           )}
