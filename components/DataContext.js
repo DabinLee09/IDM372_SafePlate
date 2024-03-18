@@ -28,15 +28,27 @@ export const DataProvider = ({ children }) => {
       restrictions: '',
     },
     {
-      name: "Emily Smith",
-      username: "@emilysmith",
-      image: require("../assets/images/avatars/avt-1.png"),
+      name:"Gianna",
+      username:"@gianna123",
+      image: require('../assets/images/avatars/avt-3.png'),
+      restrictions: '',
+    },
+    {
+      name:"Cheryl",
+      username:"@cheryl123",
+      image: require("../assets/images/avatars/avt-4.png"),
       restrictions: '',
     },
     {
       name: "Emily Smith",
       username: "@emilysmith",
       image: require("../assets/images/avatars/avt-1.png"),
+      restrictions: '',
+    },
+    {
+      name:"Cheryl",
+      username:"@cheryl123",
+      image: require("../assets/images/avatars/avt-4.png"),
       restrictions: '',
     },
     {

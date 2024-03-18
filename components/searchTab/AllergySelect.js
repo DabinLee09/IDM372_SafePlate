@@ -4,15 +4,16 @@ import Pill from "../../settings/Pill";
 import { useData } from "../DataContext";
 import { PrimaryColors } from "../../settings/styles/Colors";
 
-export default function AllergySelect({ selectedItems, updateSelectedItems }) {
+export default function AllergySelect() {
   const { allergyArr, } = useData();
-//   const [selectedItems, setSelectedItems] = useState([]);
+  const [selectedItems, setSelectedItems] = useState([]);
 
   const toggleSelect = (index) => {
     const newArr = [...allergyArr];
     newArr[index].type = newArr[index].type === "active" ? "inactive" : "active";
     const newSelectedItems = newArr.filter((item) => item.type === "active");
-    updateSelectedItems(newSelectedItems);
+    // setSelectedItems(newSelectedItems);
+    setSelectedItems(newSelectedItems);
   };
 
 
