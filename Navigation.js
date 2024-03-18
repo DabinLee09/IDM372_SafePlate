@@ -18,6 +18,7 @@ import RestaurantList from './screens/RestaurantList';
 import { DataProvider } from './components/DataContext';
 
 import CuratedGuide from './screens/CuratedGuide';
+import CuratedGuidePage from './screens/CuratedGuidePage';
 
 
 //SearchTab
@@ -65,7 +66,8 @@ function HomeStackGroup({navigation, route}) {
       <HomeStack.Group>
         <HomeStack.Screen name='Home' component={Home} />
         <HomeStack.Screen name='RestaurantDetail' component={RestaurantDetail} initialParams={{ navigation,}}/>
-        <HomeStack.Screen name="CuratedGuide" component={CuratedGuide} />
+        {/* <HomeStack.Screen name="CuratedGuide" component={CuratedGuide} /> */}
+        <HomeStack.Screen name='CuratedGuidePage' component={CuratedGuidePage} initialParams={{ navigation,}}/>
         <HomeStack.Screen name='SearchTabDefault' component={SearchTabDefault} initialParams={{ navigation,}}/>
         <HomeStack.Screen name='RestaurantList' component={RestaurantList} initialParams={{ navigation,}} />
       </HomeStack.Group>

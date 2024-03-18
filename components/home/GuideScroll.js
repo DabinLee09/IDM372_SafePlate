@@ -4,7 +4,8 @@ import { spacing } from '../../settings/styles/Spacing';
 
 const GuidesScroll = ({ images, navigation }) => {
   const handleImagePress = (restriction) => {
-    navigation.navigate('CuratedGuide', { guide: restriction });
+    // navigation.navigate('CuratedGuide', { guide: restriction });
+    navigation.navigate('CuratedGuidePage', { restriction });
   };
 
   return (

@@ -1,8 +1,7 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-export default function curatedGuideArr() {
-    const curated = [
+export const curatedGuideArr = [
         {
           name: "Dairy",
           restriction: "allergy",
@@ -12,18 +11,18 @@ export default function curatedGuideArr() {
           bannerBackColor: "SecondaryColors.Brown",
           freeOf: "free of milk, cheese, butter, cream, yogurt, sour cream, whey, casein, and lactose",
           designation: "dairy-free",
-          type: "dairy allergy or ee",
+          type: "dairy allergy or intolerance",
           understandingTitle: "Understanding a Dairy Allergy",
           understandingRestriction: "A dairy allergy is a heightened sensitivity to dairy, the most common allergy-causing product for infants and young children. Approximately 70% of children with a dairy allergy tolerate baked cow milk, which refers to milk that has undergone extensive heating. Those who consume baked milk without adverse reactions may be more likely to outgrow their dairy allergy earlier than those who react to baked milk.",
           restrictionImage: "dairy.png",
-          understandingTitle2: "Understanding a Lactose ee",
-          understandingIntolerance: "Food intolerances, unlike allergies, do not involve the immune system. Lactose intolerant individuals lack the enzyme lactase needed to break down lactose, a sugar found in milk and dairy products. While uncomfortable, lactose ee isn't life-threatening. Common symptoms include nausea, cramps, gas, bloating, and diarrhea after consuming dairy.",
+          understandingTitle2: "Understanding a Lactose Intolerance",
+          understandingIntolerance: "Food intolerances, unlike allergies, do not involve the immune system. Lactose intolerant individuals lack the enzyme lactase needed to break down lactose, a sugar found in milk and dairy products. While uncomfortable, lactose intolerance isn't life-threatening. Common symptoms include nausea, cramps, gas, bloating, and diarrhea after consuming dairy.",
           intoleranceImage: "lactose.png",
           cautionLabel: "Here are some of the most common ingredients that you should look out for:",
           ingredientList: "Butter, Cheese, Cream, Milk, Pudding, Sour cream, Yogurt",
           ingredientStarred: "",
           foodListTitle: "",
-          foodLabel: "Here are some of the highest-risk foods for people with a dairy allergy or ee:",
+          foodLabel: "Here are some of the highest-risk foods for people with a dairy allergy or intolerance:",
           foodTitle1: "Creamy Soups and Sauces",
           foodBody1: "Cream-based soups like clam chowder, creamy pasta sauces, and sauces like béchamel or hollandaise often contain dairy.",
           foodImage1: "soup.png",
@@ -37,7 +36,7 @@ export default function curatedGuideArr() {
           foodBody4: "Bread rolls, buns, and baked goods like croissants may contain butter or milk.",
           foodImage4: "cinnamon-rolls.png",
          link1: "https://www.foodallergy.org/living-food-allergies/food-allergy-essentials/common-allergens/milk",
-          link2: "https://www.foodallergy.org/resources/milk-allergy-vs-lactose-ee",
+          link2: "https://www.foodallergy.org/resources/milk-allergy-vs-lactose-intolerance",
          link3: "https://www.foodallergy.org/resources/recognizing-and-responding-reaction",
           allergyContent: "",
          allergyContentTitle: "",
@@ -536,13 +535,4 @@ export default function curatedGuideArr() {
           dietContent: "",
           dietContentTitle: ""
         },
-        
-      ]
-
-
-  return (
-    <View>
-      <Text>curatedGuideArr</Text>
-    </View>
-  )
-}
+];

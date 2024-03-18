@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, Button, ScrollView, StyleSheet } from 'react-native'
+import { View, Text, SafeAreaView, Button, ScrollView, StyleSheet, TouchableOpacity, Image } from 'react-native'
 import React, { useState } from 'react'
 import UserGreeting from '../components/home/UserGreeting'
 import SearchTabBtn from '../components/home/SearchTabBtn'
@@ -12,10 +12,11 @@ import { spacing } from '../settings/styles/Spacing';
 import { TintsColors } from '../settings/styles/Colors';
 import GuidesScroll from '../components/home/GuideScroll';
 
-export default function Home({navigation}) {
-  const { city, setCity } = useData();
+// export default function Home({navigation}) {
+  // const { city, setCity } = useData();
   // console.log('Home city:', city); // Debug log
-  const guideImages = [
+  const Home = ({ navigation }) => {
+    const guideImages = [
     { source: require('../assets/images/curatedGuides/Diet-card-treenut.png'), restriction: 'treenut' },
     { source: require('../assets/images/curatedGuides/Diet-card-vegetarian.png'), restriction: 'vegetarian' },
     { source: require('../assets/images/curatedGuides/Diet-card-keto.png'), restriction: 'keto' },
@@ -30,6 +31,13 @@ export default function Home({navigation}) {
     { source: require('../assets/images/curatedGuides/Diet-card-vegan.png'), restriction: 'vegan' },
     { source: require('../assets/images/curatedGuides/Diet-card-halal.png'), restriction: 'halal' },
   ];
+
+  // const Home = ({ navigation }) => {
+  const { city, setCity } = useData();
+
+    const navigateToGuide = (index) => {
+      navigation.navigate('CuratedGuidePage', { selectedIndex: index });
+    };
   
   return (
     <SafeAreaView style={styles.safeAreaContainer} >
@@ -44,11 +52,11 @@ export default function Home({navigation}) {
 
         <Text style={[type.heading2L, spacing.vert1x, {color: TintsColors.DarkGray}]}>Curated Guides by SafePlate</Text>
         <Text style={[type.body1M, spacing.vert2x, {color: TintsColors.DarkGray}]}>Tips and educational content for each dietary need</Text>
-        <GuidesScroll images={guideImages} navigation={navigation} />
+        <GuidesScroll images={guideImages} navigation={navigation} onPressImage={navigateToGuide}/>
        
       </ScrollView>
     </SafeAreaView>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -57,6 +65,7 @@ const styles = StyleSheet.create({
     paddingVertical: 24,
     backgroundColor: "#fff",
     // paddingBottom: 50,
-
   },
 })
+
+export default Home;
