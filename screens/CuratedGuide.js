@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { View, Text } from 'react-native';
 import * as FileSystem from 'expo-file-system';
 import * as Papa from 'react-papaparse';
-import { Asset } from 'expo-asset';
+// import { Asset } from 'expo-asset';
 
 const CuratedGuide = () => {
     useEffect(() => {

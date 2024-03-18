@@ -57,6 +57,18 @@ export const DataProvider = ({ children }) => {
       image: require("../assets/images/avatars/avt-1.png"),
       restrictions: '',
     },
+    {
+      name:"Cheryl",
+      username:"@cheryl123",
+      image: require("../assets/images/avatars/avt-4.png"),
+      restrictions: '',
+    },
+    {
+      name: "Emily",
+      username: "@emilysmith",
+      image: require("../assets/images/avatars/avt-1.png"),
+      restrictions: '',
+    },
   ];
 
   const allergyArr = [
