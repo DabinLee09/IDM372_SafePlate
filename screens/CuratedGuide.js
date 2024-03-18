@@ -1,7 +1,7 @@
 import * as FileSystem from 'expo-file-system';
 import { useEffect } from 'react'; // Import useEffect to trigger file reading
 import { View, Text} from 'react-native';
-import safePlate from '../assets/datasets/'
+// import safePlate from '../assets/datasets/'
 
 
 const CuratedGuide = () => {

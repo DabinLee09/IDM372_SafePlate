@@ -11,12 +11,19 @@ export default function BuddySelect() {
       <FlatList
         data={buddiesInfoArr}
         renderItem={({ item, index }) => (
-          <View style={{ alignItems: "center", backgroundColor: "pink", marginRight: 8, width: 60,}}>
+          <View
+            style={{
+              alignItems: "center",
+              // backgroundColor: "pink",
+              marginRight: 8,
+              width: 60,
+            }}
+          >
             <TouchableOpacity
               key={index}
               style={{
                 alignItems: "center",
-                marginBottom:8,
+                marginBottom: 8,
               }}
             >
               <Image
@@ -26,12 +33,18 @@ export default function BuddySelect() {
                   height: 60,
                   borderRadius: 30,
                 }}
-              /></TouchableOpacity>
-              <Text>{item.name}</Text>
-            
+              />
+            </TouchableOpacity>
+            <Text>{item.name}</Text>
           </View>
         )}
-        contentContainerStyle={{ padding: 8 }}
+        contentContainerStyle={{
+          gap: 8,
+          //   backgroundColor: "red",
+          flexWrap: "wrap",
+          flexDirection: "row",
+          justifyContent: "space-between",
+        }}
         // numColumns={2} // Display four items in one row
         keyExtractor={(item, index) => index.toString()}
       />

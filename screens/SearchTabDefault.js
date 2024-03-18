@@ -39,31 +39,7 @@ export default function SearchTabDefault() {
 
   const { setCity } = useData();
 
-  // const [selectedItems, setSelectedItems] = useState([]);
 
-  // const updateSelectedItems = (newItem) => {
-  //   setSelectedItems((prevItems) => [...prevItems, newItem]);
-  // };
-
-  //What
-  //What
-  const { setSelectedRestriction } = useData();
-  const [selectedDietItems, setSelectedDietItems] = useState([]);
-  const [selectedAllergyItems, setSelectedAllergyItems] = useState([]);
-
-  const handleDietSelectUpdate = (selectedItems) => {
-    setSelectedDietItems(selectedItems);
-    updateSelectedRestriction([...selectedItems, ...selectedAllergyItems]);
-  };
-
-  const handleAllergySelectUpdate = (selectedItems) => {
-    setSelectedAllergyItems(selectedItems);
-    updateSelectedRestriction([...selectedDietItems, ...selectedItems]);
-  };
-
-  const updateSelectedRestriction = (selectedRestriction) => {
-    setSelectedRestriction(selectedRestriction);
-  };
 
   return (
     <BlurView intensity={70} style={styles.container} tint="light">
@@ -124,11 +100,8 @@ export default function SearchTabDefault() {
               <Text style={styles.cardHeader}>What</Text>
               {/* <Text style={styles.cardSub}>Im flexible</Text> */}
               <Animated.View>
-                <AllergySelect
-                  updateSelectedItems={handleAllergySelectUpdate}
-                />
-                <DietSelect updateSelectedItems={handleDietSelectUpdate} />
-                
+                <AllergySelect/>
+                <DietSelect />
               </Animated.View>
             </>
           )}
