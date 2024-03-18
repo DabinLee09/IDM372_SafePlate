@@ -1,71 +1,76 @@
-import * as FileSystem from 'expo-file-system';
-import { useEffect } from 'react'; // Import useEffect to trigger file reading
-import { View, Text} from 'react-native';
-// import safePlate from '../assets/datasets/'
-
+import React from 'react';
+import { View } from 'react-native';
+import { useRoute } from '@react-navigation/native';
+import TreeNutGuideContent from '../components/guides/TreeNutGuideContent';
+import VegetarianGuideContent from '../components/guides/VegetarianGuideContent';
+import KetoGuideContent from '../components/guides/KetoGuideContent';
+import DairyGuideContent from '../components/guides/DairyGuideContent';
+import GlutenGuideContent from '../components/guides/GlutenGuideContent';
+import ShellfishGuideContent from '../components/guides/ShellfishGuideContent';
+import PeanutGuideContent from '../components/guides/PeanutGuideContent';
+import SoyGuideContent from '../components/guides/SoyGuideContent';
+import SesameGuideContent from '../components/guides/SesameGuideContent';
+import EggGuideContent from '../components/guides/EggGuideContent';
+import FishGuideContent from '../components/guides/FishGuideContent';
+import VeganGuideContent from '../components/guides/VeganGuideContent';
+import HalalGuideContent from '../components/guides/HalalGuideContent';
 
 const CuratedGuide = () => {
-    useEffect(() => {
-      readCSVFile(); // Trigger reading CSV file on component mount
-    }, []);
-  
-    const readCSVFile = async () => {
-      try {
-        const path = FileSystem.documentDirectory + '../';
-        const { exists, isDirectory } = await FileSystem.getInfoAsync(path);
-  
-        if (exists && !isDirectory) {
-          const data = await FileSystem.readAsStringAsync(path);
-          parseCSVData(data);
-        } else {
-          console.error('CSV file does not exist or is a directory.');
-        }
-      } catch (error) {
-        console.error('Error reading CSV file:', error);
-      }
-    };
-  
-    const parseCSVData = (csvData) => {
-      // Parse the CSV data (example: split by newline and comma)
-      const rows = csvData.split('\n').map(row => row.split(','));
-  
-      // Now you have an array of arrays, each inner array representing a row of data
-      console.log(rows);
-      // You can handle this data further as per your requirement
-    };
-  
-    return (
-      <View>
-        <Text>CuratedGuide Placeholder</Text>
-      </View>
-    );
-  };
-  
-  export default CuratedGuide;
+  const route = useRoute();
+  const { guide } = route.params;
 
+  // Determine the guide content component based on the guide parameter
+  let GuideContentComponent = null;
 
+  switch (guide) {
+    case 'treenut':
+      GuideContentComponent = TreeNutGuideContent;
+      break;
+    case 'vegetarian':
+      GuideContentComponent = VegetarianGuideContent;
+      break;
+    case 'keto':
+        GuideContentComponent = KetoGuideContent;
+        break;
+    case 'dairy':
+        GuideContentComponent = DairyGuideContent;
+        break;
+    case 'gluten':
+        GuideContentComponent = GlutenGuideContent;
+        break;
+    case 'shellfish':
+        GuideContentComponent = ShellfishGuideContent;
+        break;
+    case 'peanut':
+        GuideContentComponent = PeanutGuideContent;
+        break;
+    case 'soy':
+        GuideContentComponent = SoyGuideContent;
+        break;
+    case 'sesame':
+        GuideContentComponent = SesameGuideContent;
+        break;
+    case 'egg':
+        GuideContentComponent = EggGuideContent;
+        break;
+    case 'fish':
+        GuideContentComponent = FishGuideContent;
+        break;
+    case 'vegan':
+        GuideContentComponent = VeganGuideContent;
+        break;
+    case 'halal':
+        GuideContentComponent = HalalGuideContent;
+        break;
+    default:
+      break;
+  }
 
+  return (
+    <View>
+      {GuideContentComponent && <GuideContentComponent />}
+    </View>
+  );
+};
 
-// const readCSVFile = async () => {
-//   try {
-//     const path = FileSystem.documentDirectory + 'safeplate_curated-guide_content.csv';
-//     const data = await FileSystem.readAsStringAsync(path);
-
-//     parseCSVData(data);
-//   } catch (error) {
-//     console.error('Error reading CSV file:', error);
-//   }
-// };
-
-// import React from 'react';
-// import { View, Text } from 'react-native';
-
-// export default function CuratedGuide() {
-//     console.log('Rendering CuratedGuide');
-    
-//     return (
-//       <View>
-//         <Text>CuratedGuide Placeholder</Text>
-//       </View>
-//     );
-//   }
+export default CuratedGuide;
