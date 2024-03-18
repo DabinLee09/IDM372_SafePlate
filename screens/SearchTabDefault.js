@@ -16,6 +16,7 @@ import { useData } from "../components/DataContext";
 import SearchLocation from "../components/searchTab/SearchLocation";
 import { useNavigation } from "@react-navigation/native";
 import AllergySelect from "../components/searchTab/AllergySelect";
+import DietSelect from "../components/searchTab/DietSelect";
 import { spacing } from "../settings/styles/Spacing";
 
 export default function SearchTabDefault() {
@@ -38,6 +39,12 @@ export default function SearchTabDefault() {
 
 
   const { setCity } = useData();
+
+  const [selectedItems, setSelectedItems] = useState([]);
+
+  const updateSelectedItems = (newItem) => {
+    setSelectedItems(prevItems => [...prevItems, newItem]);
+  };
 
 
 
@@ -88,7 +95,8 @@ export default function SearchTabDefault() {
             <Text style={styles.cardHeader}>What</Text>
             <Text style={styles.cardSub}>Im flexible</Text>
             <Animated.View>
-              <AllergySelect />
+            <AllergySelect selectedItems={selectedItems} updateSelectedItems={updateSelectedItems} />
+            <DietSelect selectedItems={selectedItems} updateSelectedItems={updateSelectedItems} />
             </Animated.View>
           </>
         )}
@@ -96,7 +104,7 @@ export default function SearchTabDefault() {
 
       {/* where */}
       {/* where */}
-      <View style={[openCard === 2 ? styles.cardFocus : styles.card, spacing.vert2x]}>
+      <View style={[openCard === 2 ? styles.cardFocus : styles.card, spacing.vert8x]}>
         {openCard != 2 && (
           <AnimatedTouchableOpacity
             onPress={() => setOpenCard(2)}

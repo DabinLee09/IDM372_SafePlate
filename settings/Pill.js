@@ -9,7 +9,7 @@ const Pill = ({ size = 'small', type = 'active', dietaryType = 'allergy', text, 
     const isActive = type === 'active';
 
     const textColor = isActive ? TintsColors.White : primaryColor;
-    const borderColor = type === 'inactive' ? primaryColor : 'transparent';
+    const borderColor = type === 'active' ? 'transparent': primaryColor;
   
     const paddingVertical = size === 'large' ? 9 : 5;
     const paddingHorizontal = size === 'large' ? 16 : 8;
@@ -22,7 +22,7 @@ const Pill = ({ size = 'small', type = 'active', dietaryType = 'allergy', text, 
         paddingHorizontal: paddingHorizontal,
         paddingVertical: paddingVertical,
         backgroundColor: type === 'active' ? primaryColor : TintsColors.White,
-        borderWidth: type === 'inactive' ? 1 : 0,
+        borderWidth: type === 'active' ? 0 : 1,
         borderColor: borderColor,
         flexDirection: 'row',
         alignItems: 'center',

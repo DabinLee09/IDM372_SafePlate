@@ -14,9 +14,10 @@ export const DataProvider = ({ children }) => {
   const [radius, setRadius] = useState(1000);
   const [price, setPrice] = useState();
   const [filter, setFilter] = useState([]);
-  const [select, setSelect] = useState("inactive")
+  const [select, setSelect] = useState("inactive");
+  const [selectedItems, setSelectedItems] = useState([]);
 
-  const [selectWheat, setselectWheat] = useState("inactive")
+  const [selectedRestriction, setSelectedRestriction] = useState([]);
 
 
   const buddiesInfo = [
@@ -33,79 +34,82 @@ export const DataProvider = ({ children }) => {
       name: "Wheat",
       icon: DietaryIcons.WheatSolid ,
       dietaryType: "allergy",
-      type: {select}
+      type: select,
     },
     {
       name: "Peanut",
       icon: DietaryIcons.PeanutSolid ,
       dietaryType: "allergy",
-      type: {select}
+      type: select,
     },
     {
       name: "Dairy",
       icon: DietaryIcons.DairySolid ,
       dietaryType: "allergy",
-      type: {select},
+      type: select,
     },
     {
       name: "Egg",
       icon: DietaryIcons.EggSolid ,
       dietaryType: "allergy",
-      type: {select},
+      type: select,
     },
     {
       name: "Sesame",
       icon: DietaryIcons.SesameSolid ,
       dietaryType: "allergy",
-      type: {select},
+      type: select,
     },
     {
       name: "Soy",
       icon: DietaryIcons.SoySolid ,
       dietaryType: "allergy",
-      type: {select},
+      type: select,
     },
     {
       name: "Fish",
       icon: DietaryIcons.FishSolid ,
       dietaryType: "allergy",
-      type: {select},
+      type: select,
     },
     {
       name: "Shellfish",
       icon: DietaryIcons.ShellfishSolid ,
       dietaryType: "allergy",
-      type: {select},
+      type: select,
     },
     {
       name: "Treenut",
       icon: DietaryIcons.TreenutSolid,
       dietaryType: "allergy",
-      type: {select},
+      type: select,
     },
+  ]
+
+  const dietArr = [
     {
       name: "Halal",
       icon: DietaryIcons.HalalSolid ,
       dietaryType: "diet",
-      type: {select},
+      type: select,
     },
     {
       name: "Vegan",
       icon: DietaryIcons.VeganSolid ,
       dietaryType: "diet",
-      type: {select},
+      type: select,
     },
     {
       name: "Vegetarian",
       icon: DietaryIcons.VegetarianSolid ,
       dietaryType: "diet",
-      type: {select},
+      type: select,
     },
     {
       name: "keto",
       icon: DietaryIcons.KetoSolid ,
       dietaryType: "diet",
-      type: {select},
+      type: select,
     },
   ]
   // const setRestaurantData = (data) => {
@@ -130,7 +134,11 @@ export const DataProvider = ({ children }) => {
         filter,
         setFilter,
         select, setSelect,
-        allergyArr
+        selectedItems, setSelectedItems,
+        selectedRestriction, setSelectedRestriction,
+        allergyArr,
+        dietArr
+        
       }}
     >
       {children}
