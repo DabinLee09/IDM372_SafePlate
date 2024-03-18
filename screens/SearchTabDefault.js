@@ -5,6 +5,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   VirtualizedList,
+  ScrollView,
 } from "react-native";
 import { BlurView } from "expo-blur";
 import { FadeIn, FadeOut, SlideInDown } from "react-native-reanimated";
@@ -14,6 +15,8 @@ import { PrimaryColors } from "../settings/styles/Colors";
 import { useData } from "../components/DataContext";
 import SearchLocation from "../components/searchTab/SearchLocation";
 import { useNavigation } from "@react-navigation/native";
+import AllergySelect from "../components/searchTab/AllergySelect";
+import { spacing } from "../settings/styles/Spacing";
 
 export default function SearchTabDefault() {
   const navigation = useNavigation();
@@ -40,9 +43,10 @@ export default function SearchTabDefault() {
 
   return (
     <BlurView intensity={70} style={styles.container} tint="light">
+      <ScrollView>
       {/* who */}
       {/* who */}
-      <View style={openCard === 0 ? styles.cardFocus : styles.card}>
+      <View style={[openCard === 0 ? styles.cardFocus : styles.card, spacing.vert3x]}>
         {openCard != 0 && (
           <AnimatedTouchableOpacity
             onPress={() => setOpenCard(0)}
@@ -66,7 +70,7 @@ export default function SearchTabDefault() {
 
       {/* what */}
       {/* what */}
-      <View style={ openCard === 1 ? styles.cardFocus : styles.card}>
+      <View style={ [openCard === 1 ? styles.cardFocus : styles.card, spacing.vert3x]}>
         {openCard != 1 && (
           <AnimatedTouchableOpacity
             onPress={() => setOpenCard(1)}
@@ -83,14 +87,16 @@ export default function SearchTabDefault() {
           <>
             <Text style={styles.cardHeader}>What</Text>
             <Text style={styles.cardSub}>Im flexible</Text>
-            <Animated.View></Animated.View>
+            <Animated.View>
+              <AllergySelect />
+            </Animated.View>
           </>
         )}
       </View>
 
       {/* where */}
       {/* where */}
-      <View style={openCard === 2 ? styles.cardFocus : styles.card}>
+      <View style={[openCard === 2 ? styles.cardFocus : styles.card, spacing.vert2x]}>
         {openCard != 2 && (
           <AnimatedTouchableOpacity
             onPress={() => setOpenCard(2)}
@@ -115,7 +121,7 @@ export default function SearchTabDefault() {
 
 
 
-
+          </ScrollView>
       {/* Footer */}
       {/* Footer */}
       <Animated.View style={styles.footer} entering={SlideInDown.delay(200)}>
