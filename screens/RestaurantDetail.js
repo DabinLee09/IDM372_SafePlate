@@ -5,6 +5,7 @@ import { TabView, TabBar } from "react-native-tab-view";
 import MenuItems from "../components/restaurantDetail/MenuItems";
 import Info from "../components/restaurantDetail/Info";
 import Reviews from "../components/restaurantDetail/Reviews";
+import ReviewsTest from "../components/restaurantDetail/ReviewsTest";
 import { PrimaryColors, TintsColors } from "../settings/styles/Colors"; // Assuming you have defined your color constants
 import { type } from "../settings/styles/Typography"; // Assuming you have defined your typography styles
 
@@ -65,7 +66,7 @@ export default function RestaurantDetail({ route }) {
       {openTab === 2 && (
         <View style={{backgroundColor:"lightblue"}}>
         <Text>Reviews open</Text>
-        <Reviews />
+        <ReviewsTest />
         </View>
         )}
 
