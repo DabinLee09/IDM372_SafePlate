@@ -236,6 +236,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap:8,
     ...spacing.vert3x,
-    marginTop: 16,
   },
 })
