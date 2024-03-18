@@ -31,105 +31,127 @@ export default function SearchTabDefault() {
 
   const continueBtn = () => {
     setOpenCard((openCard) => {
-      console.log("SearchTabDefault.js/continueBtn/prevCardNum  :", openCard)
+      console.log("SearchTabDefault.js/continueBtn/prevCardNum  :", openCard);
       return openCard + 1;
     });
   };
-
-
 
   const { setCity } = useData();
 
   const [selectedItems, setSelectedItems] = useState([]);
 
   const updateSelectedItems = (newItem) => {
-    setSelectedItems(prevItems => [...prevItems, newItem]);
+    setSelectedItems((prevItems) => [...prevItems, newItem]);
   };
-
-
 
   return (
     <BlurView intensity={70} style={styles.container} tint="light">
       <ScrollView>
-      {/* who */}
-      {/* who */}
-      <View style={[openCard === 0 ? styles.cardFocus : styles.card, spacing.vert3x]}>
-        {openCard != 0 && (
-          <AnimatedTouchableOpacity
-            onPress={() => setOpenCard(0)}
-            style={styles.cardPreview}
-            entering={FadeIn.duration(200)}
-            exiting={FadeOut.duration(200)}
-          >
-            <Text style={styles.previewText}>Who</Text>
-            <Text style={styles.previewDate}>Anyone</Text>
-          </AnimatedTouchableOpacity>
-        )}
+        {/* who */}
+        {/* who */}
+        <View
+          style={[
+            openCard === 0 ? styles.cardFocus : styles.card,
+            spacing.vert3x,
+          ]}
+        >
+          {openCard != 0 && (
+            <AnimatedTouchableOpacity
+              onPress={() => setOpenCard(0)}
+              style={styles.cardPreview}
+              entering={FadeIn.duration(200)}
+              exiting={FadeOut.duration(200)}
+            >
+              <Text style={styles.previewText}>Who</Text>
+              <Text style={styles.previewDate}>Anyone</Text>
+            </AnimatedTouchableOpacity>
+          )}
 
-        {openCard === 0 && (
-          <>
-            <Text style={styles.cardHeader}>Who</Text>
-            <Text style={styles.cardSub}>Im flexible</Text>
-            <Animated.View style={styles.cardBody}></Animated.View>
-          </>
-        )}
-      </View>
+          {openCard === 0 && (
+            <>
+              <Text style={styles.cardHeader}>Who</Text>
+              <Text style={styles.cardSub}>Im flexible</Text>
+              <Animated.View style={styles.cardBody}></Animated.View>
+            </>
+          )}
+        </View>
 
-      {/* what */}
-      {/* what */}
-      <View style={ [openCard === 1 ? styles.cardFocus : styles.card, spacing.vert3x]}>
-        {openCard != 1 && (
-          <AnimatedTouchableOpacity
-            onPress={() => setOpenCard(1)}
-            style={styles.cardPreview}
-            entering={FadeIn.duration(200)}
-            exiting={FadeOut.duration(200)}
-          >
-            <Text style={styles.previewText}>What</Text>
-            <Text style={styles.previewDate}>Im flexible</Text>
-          </AnimatedTouchableOpacity>
-        )}
+        {/* what */}
+        {/* what */}
+        <View
+          style={[
+            openCard === 1 ? styles.cardFocus : styles.card,
+            spacing.vert3x,
+          ]}
+        >
+          {openCard != 1 && (
+            <AnimatedTouchableOpacity
+              onPress={() => setOpenCard(1)}
+              style={styles.cardPreview}
+              entering={FadeIn.duration(200)}
+              exiting={FadeOut.duration(200)}
+            >
+              <Text style={styles.previewText}>What</Text>
+              <Text style={styles.previewDate}>Im flexible</Text>
+            </AnimatedTouchableOpacity>
+          )}
 
-        {openCard === 1 && (
-          <>
-            <Text style={styles.cardHeader}>What</Text>
-            <Text style={styles.cardSub}>Im flexible</Text>
-            <Animated.View>
-            <AllergySelect selectedItems={selectedItems} updateSelectedItems={updateSelectedItems} />
-            <DietSelect selectedItems={selectedItems} updateSelectedItems={updateSelectedItems} />
-            </Animated.View>
-          </>
-        )}
-      </View>
+          {openCard === 1 && (
+            <>
+              <Text style={styles.cardHeader}>What</Text>
+              <Text style={styles.cardSub}>Im flexible</Text>
+              <Animated.View>
+                <AllergySelect
+                  selectedItems={selectedItems}
+                  updateSelectedItems={updateSelectedItems}
+                />
+                <DietSelect
+                  selectedItems={selectedItems}
+                  updateSelectedItems={updateSelectedItems}
+                />
+                <Text>Selected: {selectedItems.length}</Text>
+                <Text>
+                  {selectedItems.map((item, index) => (
+                    <Text key={index}>{item.name}, </Text>
+                  ))}
+                </Text>
+              </Animated.View>
+            </>
+          )}
+        </View>
 
-      {/* where */}
-      {/* where */}
-      <View style={[openCard === 2 ? styles.cardFocus : styles.card, spacing.vert8x]}>
-        {openCard != 2 && (
-          <AnimatedTouchableOpacity
-            onPress={() => setOpenCard(2)}
-            style={styles.cardPreview}
-            entering={FadeIn.duration(200)}
-            exiting={FadeOut.duration(200)}
-          >
-            <Text style={styles.previewText}>Where</Text>
-            <Text style={styles.previewDate}>Anywhere</Text>
-          </AnimatedTouchableOpacity>
-        )}
-        {openCard === 2 && (
-          <>
-            <Text style={styles.cardHeader}>Where</Text>
-            <Text style={styles.cardSub}>Enter the area where you'd like to discover dining options</Text>
-            <Animated.View>
-            <SearchLocation cityHandler={setCity}/>
-            </Animated.View>
-          </>
-        )}
-      </View>
-
-
-
-          </ScrollView>
+        {/* where */}
+        {/* where */}
+        <View
+          style={[
+            openCard === 2 ? styles.cardFocus : styles.card,
+            spacing.vert8x,
+          ]}
+        >
+          {openCard != 2 && (
+            <AnimatedTouchableOpacity
+              onPress={() => setOpenCard(2)}
+              style={styles.cardPreview}
+              entering={FadeIn.duration(200)}
+              exiting={FadeOut.duration(200)}
+            >
+              <Text style={styles.previewText}>Where</Text>
+              <Text style={styles.previewDate}>Anywhere</Text>
+            </AnimatedTouchableOpacity>
+          )}
+          {openCard === 2 && (
+            <>
+              <Text style={styles.cardHeader}>Where</Text>
+              <Text style={styles.cardSub}>
+                Enter the area where you'd like to discover dining options
+              </Text>
+              <Animated.View>
+                <SearchLocation cityHandler={setCity} />
+              </Animated.View>
+            </>
+          )}
+        </View>
+      </ScrollView>
       {/* Footer */}
       {/* Footer */}
       <Animated.View style={styles.footer} entering={SlideInDown.delay(200)}>
@@ -141,18 +163,27 @@ export default function SearchTabDefault() {
           }}
         >
           <TouchableOpacity onPress={onClearAll}>
-            <Text style={[{textDecorationLine: "underline", color:PrimaryColors.Green}, type.heading5S ]}>
+            <Text
+              style={[
+                { textDecorationLine: "underline", color: PrimaryColors.Green },
+                type.heading5S,
+              ]}
+            >
               Clear All
             </Text>
           </TouchableOpacity>
 
           {/* <TouchableOpacity onPress={() => router.back()} style={styles.btn}> */}
-          <TouchableOpacity style={styles.btn} 
-          onPress={() => openCard < 2 ? continueBtn(): navigation.navigate('RestaurantList')}
+          <TouchableOpacity
+            style={styles.btn}
+            onPress={() =>
+              openCard < 2
+                ? continueBtn()
+                : navigation.navigate("RestaurantList")
+            }
           >
-  <Text style={[styles.btnText, type.heading5S]}>Continue</Text>
-</TouchableOpacity>
-
+            <Text style={[styles.btnText, type.heading5S]}>Continue</Text>
+          </TouchableOpacity>
         </View>
       </Animated.View>
     </BlurView>
@@ -207,7 +238,7 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
 
     elevation: 2,
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOpacity: 0.15,
     shadowRadius: 4,
     shadowOffset: {

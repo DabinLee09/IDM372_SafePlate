@@ -59,7 +59,10 @@ export default function AllergySelect() {
       <Text>Selected: {selectedItems.length}</Text>
       <Text>
         {selectedItems.map((item, index) => (
+            <>
           <Text key={index}>{item.name}, </Text>
+          <Text key={index}>{item.type}, </Text>
+          </>
         ))}
       </Text>
       <Text>Selected: {selectedRestriction.length}</Text>
