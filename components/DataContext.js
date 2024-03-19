@@ -16,7 +16,7 @@ export const DataProvider = ({ children }) => {
   const [filter, setFilter] = useState([]);
   const [select, setSelect] = useState("inactive");
   const [selectedItems, setSelectedItems] = useState([]);
-  const [buddyPick, setBuddyPick] = useState();
+  const [buddyPick, setBuddyPick] = useState([]);
 
   const [selectedRestriction, setSelectedRestriction] = useState([]);
 

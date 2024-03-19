@@ -8,12 +8,13 @@ import { spacing } from '../../settings/styles/Spacing';
 import { Ionicons } from '@expo/vector-icons';
 import { Button } from 'react-native-paper';
 
-export default function Reviews() {
+export default function Reviews(props) {
+  const { name, image, price, rating, categories, reviews } = props.route.params;
     console.log('Rendering Reviews component');
     
     return (
       // <View>
-      <ScrollView style={styles.container}>
+      <View style={styles.container}>
         <Text style={styles.title}>Recommended Reviews</Text>
 
         <View style={styles.centeredContainer}>
@@ -27,8 +28,8 @@ export default function Reviews() {
             <Ionicons name="star-half" size={24} style={{ color: SecondaryColors.BrightYellow }} />
           </View>
 
-          <Text style={styles.numberRating}>4.2 / 5.0</Text>
-          <Text style={styles.caption}>Based on 294 reviews</Text>
+          <Text style={styles.numberRating}>{rating} / 5.0</Text>
+          <Text style={styles.caption}>Based on {reviews} reviews</Text>
 
           <Image style={styles.image} source={require('../../assets/images/review-bar.jpg')} />
         </View>
@@ -112,7 +113,7 @@ export default function Reviews() {
         </View>
          
         {/* </View> */}
-      </ScrollView>
+      </View>
     );
   }
 

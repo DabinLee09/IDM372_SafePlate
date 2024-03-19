@@ -18,6 +18,8 @@ import RestaurantList from './screens/RestaurantList';
 import { DataProvider } from './components/DataContext';
 
 import CuratedGuide from './screens/CuratedGuide';
+import FilterBtn from './components/searchTab/FilterBtn';
+import FilterBtnTab from './components/searchTab/FilterBtnTab';
 
 
 //SearchTab
@@ -44,7 +46,7 @@ function SearchTabGroup({ route, navigation }){
         backgroundColor: "#53A385",
       } ,
     }}>
-      <SearchTab.Screen name="Default Search" component={SearchTabDefault} options={{ headerShown: false, }} />
+      <SearchTab.Screen name="Default Search" component={SearchTabDefault} />
       <SearchTab.Screen name="Type Search" component={SearchTabType} />
     </SearchTab.Navigator>
   )
@@ -63,17 +65,17 @@ function HomeStackGroup({navigation, route}) {
   return(
     // <HomeStack.Navigator initialRouteName='Home' screenOptions={{ headerShown: false}}>
     <HomeStack.Navigator screenOptions={{ 
-      headerStyle: {backgroundColor: "red",  height: 70,} }}>
+      headerStyle: {  height: 60,} }}>
       <HomeStack.Group>
-        <HomeStack.Screen name='Home' component={Home} options={{ headerTitle: '', }}  />
-        <HomeStack.Screen name='RestaurantDetail' component={RestaurantDetail} initialParams={{ navigation,}}/>
-        <HomeStack.Screen name="CuratedGuide" component={CuratedGuide} />
+        <HomeStack.Screen name='Home' component={Home} options={{ headerTitle: '',  headerShadowVisible: false,}}  />
+        <HomeStack.Screen name='RestaurantDetail' component={RestaurantDetail} initialParams={{ navigation,}} options={{ headerTitle: '', headerBackTitle: ' ', headerTintColor: '#343434',  headerShadowVisible: false, }}/>
+        <HomeStack.Screen name="CuratedGuide" component={CuratedGuide} options={{ headerTitle: '', headerBackTitle: ' ', headerTintColor: '#343434',  headerShadowVisible: false, }} />
         <HomeStack.Screen name='SearchTabDefault' component={SearchTabDefault} initialParams={{ navigation,}}/>
-        <HomeStack.Screen name='RestaurantList' component={RestaurantList} initialParams={{ navigation,}} />
+        <HomeStack.Screen name='RestaurantList' component={RestaurantList} initialParams={{ navigation,}} options={{ headerTitle: '', headerBackTitle: ' ', headerTintColor: '#343434',  headerShadowVisible: false, }} />
       </HomeStack.Group>
       
       <HomeStack.Group screenOptions={{ presentation: 'modal' }} >
-        <HomeStack.Screen name='SearchTabGroup' component={SearchTabGroup} options={{ headerTitle: '', }} initialParams={{ 
+        <HomeStack.Screen name='SearchTabGroup' component={SearchTabGroup} options={{ headerTitle: '', headerBackTitle: ' ', headerTintColor: '#343434', headerRight: ()=><FilterBtnTab/>, headerShadowVisible: false, }} initialParams={{ 
           headerShown: false,
           tabBarLabel: "Explore",
           tabBarButton: () => (

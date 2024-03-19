@@ -11,10 +11,10 @@ export default function SearchRestaurant() {
   const {city, setRestaurantData} = useData()  
 
   const limit = 2;
-  const radius = 100;
+  const radius = 5000;
 
   const getRestaurantsFromYelp = async () => {
-    const yelpUrl = `https://api.yelp.com/v3/businesses/search?term=restaurants&location=${city}&limit=${limit}&radius=${radius}`;
+    const yelpUrl = `https://api.yelp.com/v3/businesses/search?term=restaurants&location=${city}&radius=${radius}`;
 
     const apiOptions = {
       headers: {
@@ -40,6 +40,7 @@ export default function SearchRestaurant() {
           phone: restaurant.display_phone,
           url: restaurant.url,
           distance: restaurant.distance,
+          location: restaurant.location.address1
         }))
       );
     } catch (error) {

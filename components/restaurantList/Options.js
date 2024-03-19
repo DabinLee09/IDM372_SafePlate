@@ -4,7 +4,7 @@ import { Divider } from '@rneui/themed';
 import { useData } from "../DataContext";
 
 export default function Options() {
-  const {selectedRestriction} = useData();
+  const {selectedRestriction, buddyPick} = useData();
   return (
     <View style={styles.container}>
       <View style={styles.btn}>
@@ -12,7 +12,7 @@ export default function Options() {
           source={require("../../assets/images/avatars/avt-placeHolder.png")}
           style={{ width: 32, height: 32 }}
         />
-        <Text>2 Buddies</Text>
+        <Text>{buddyPick.length} Buddies</Text>
       </View>
       <Divider orientation="vertical" color="#BFBFBF" width={1} style={{marginVertical: 8}} />
       <View style={styles.btn}>

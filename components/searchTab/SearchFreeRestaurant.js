@@ -59,23 +59,8 @@ export default function SearchFreeRestaurant() {
 
   return (
     <View>
-      <Text>SearchFreeRestaurant</Text>
-      {restaurantData && restaurantData.length > 0 ? (
-        restaurantData.map((restaurant, index) => (
-          <View key={index}>
-            <Text>Name: {restaurant.name}</Text>
-            <Text>Price: {restaurant.price}</Text>
-            <Text>Reviews: {restaurant.reviews}</Text>
-            {/* Add more information as needed */}
-          </View>
-        ))
-      ) : (
-        <Text>No data found</Text>
-      )}
-
-
-
+      <Text></Text>
 
     </View>
-  );
+  )
 }

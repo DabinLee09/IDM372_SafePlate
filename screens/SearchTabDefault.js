@@ -30,7 +30,7 @@ export default function SearchTabDefault() {
     setOpenCard(9);
   };
 
-  const { selectedRestriction } = useData();
+  const { selectedRestriction, buddyPick } = useData();
 
   const continueBtn = () => {
     setOpenCard((openCard) => {
@@ -62,7 +62,7 @@ export default function SearchTabDefault() {
               exiting={FadeOut.duration(200)}
             >
               <Text style={styles.previewText}>Who</Text>
-              <Text style={styles.previewDate}>Anyone</Text>
+              <Text style={styles.previewDate}>{buddyPick.length} Buddies</Text>
             </AnimatedTouchableOpacity>
           )}
 

@@ -8,9 +8,12 @@ import Reviews from "../components/restaurantDetail/Reviews";
 import ReviewsTest from "../components/restaurantDetail/ReviewsTest";
 import { PrimaryColors, TintsColors } from "../settings/styles/Colors"; // Assuming you have defined your color constants
 import { type } from "../settings/styles/Typography"; // Assuming you have defined your typography styles
+import FullMenu from "../components/restaurantDetail/FullMenu";
+import FilteredMenu from "../components/restaurantDetail/FilteredMenu";
 
 export default function RestaurantDetail({ route }) {
   const [openTab, setOpenTab] = useState(0);
+  const [select, setSelect] = useState(true);
 
   return (
     <ScrollView style={{ backgroundColor: "white" }}>
@@ -48,14 +51,32 @@ export default function RestaurantDetail({ route }) {
         {/* Menu Item */}
       {openTab === 0 && (
           <View>
-            <Text>Menu Item open</Text>
+            <View>
+              {/* FilteredMenu */}
+            <TouchableOpacity
+            onPress={() => setSelect(true)}
+            style={{flex: 1}}>
+            <Text style={[styles.tabText, openTab === 0 && styles.selectedTabText]}>FilteredMenu</Text>
+          </TouchableOpacity>
+
+        {/* FullMenu */}
+          <TouchableOpacity
+            onPress={() => setSelect(false)}
+            style={{flex: 1}}>
+            <Text style={[styles.tabText, openTab === 1 && styles.selectedTabText]}>FullMenu</Text>
+          </TouchableOpacity>
+            </View>
+            {select ? <FullMenu route={route} /> : <FilteredMenu route={route} />}
           </View>
         )}
+
+
+
         {/* Info */}
         {/* Info */}
         {openTab === 1 && (
           <View>
-            <Text>Info open</Text>
+            <Info route={route} />
           </View>
         )}
 
@@ -64,7 +85,7 @@ export default function RestaurantDetail({ route }) {
       {openTab === 2 && (
         <View style={{backgroundColor:"white"}}>
         {/* <Text>Reviews open</Text> */}
-        <ReviewsTest />
+        <ReviewsTest route={route} />
         </View>
         )}
 
