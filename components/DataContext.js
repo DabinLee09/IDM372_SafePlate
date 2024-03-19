@@ -31,31 +31,31 @@ export const DataProvider = ({ children }) => {
     {
       name:"Gianna",
       username:"@gianna123",
-      image: require('../assets/images/avatars/avt-3.png'),
+      image: require('../assets/images/avatars/avt-2.png'),
       restrictions: '',
     },
     {
       name:"Cheryl",
       username:"@cheryl123",
-      image: require("../assets/images/avatars/avt-4.png"),
+      image: require("../assets/images/avatars/avt-3.png"),
       restrictions: '',
     },
     {
       name: "Dabin",
       username: "@emilysmith",
-      image: require("../assets/images/avatars/avt-1.png"),
+      image: require("../assets/images/avatars/avt-4.png"),
       restrictions: '',
     },
     {
       name:"Cindy",
       username:"@cindyl123",
-      image: require("../assets/images/avatars/avt-4.png"),
+      image: require("../assets/images/avatars/avt-5.png"),
       restrictions: '',
     },
     {
       name: "Emily",
       username: "@emilysmith",
-      image: require("../assets/images/avatars/avt-1.png"),
+      image: require("../assets/images/avatars/avt-6.png"),
       restrictions: '',
     },
     {
@@ -67,7 +67,7 @@ export const DataProvider = ({ children }) => {
     {
       name: "",
       username: "",
-      image: require("../assets/images/avatars/avt-1.png"),
+      image: require("../assets/images/avatars/addbtn.png"),
       restrictions: '',
     },
   ];
