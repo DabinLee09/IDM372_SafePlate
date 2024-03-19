@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, FlatList, TouchableOpacity, Image } from "react-native";
 import { useData } from "../DataContext";
+import { PrimaryColors } from "../../settings/styles/Colors";
 
 export default function BuddySelect() {
   const { buddiesInfoArr, setBuddyPick, buddyPick } = useData();
@@ -30,7 +31,7 @@ export default function BuddySelect() {
   console.log()
   return (
     <View>
-      <Text>BuddySelect</Text>
+      {/* <Text>BuddySelect</Text> */}
       <FlatList
         data={buddiesInfoArr}
         renderItem={({ item, index }) => (
@@ -48,7 +49,7 @@ export default function BuddySelect() {
                 marginBottom: 8,
                 // Apply a red border if the buddy is selected
                 borderWidth: selectedBuddyIndices.includes(index) ? 2 : 0,
-                borderColor: 'red',
+                borderColor: PrimaryColors.Green,
                 borderRadius: 30,
               }}
             >
@@ -65,10 +66,11 @@ export default function BuddySelect() {
           </View>
         )}
         contentContainerStyle={{
-          gap: 8,
+          rowGap: 16,
           flexWrap: "wrap",
           flexDirection: "row",
           justifyContent: "space-between",
+          paddingHorizontal: 2,
         }}
         keyExtractor={(item, index) => index.toString()}
       />
