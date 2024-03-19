@@ -151,28 +151,31 @@ const RestaurantRestriction = () => {
   }));
 
   return (
-    <View>
-      <Text style={[type.heading5S, spacing.vert1x]}>
+    <View style={styles.dietaryContainer}>
+      <Text style={[type.heading5S, spacing.vert1x, {marginTop: -16}]}>
         Dietary-friendly options include:
       </Text>
-      <FlatList
-        data={updatedItems} // Use updatedItems instead of filteredItems
-        renderItem={({ item, index }) => (
-          <TouchableOpacity key={index}>
-            <Pill
-              size="small"
-              type={item.type} // Use the updated type property
-              dietaryType={item.dietaryType}
-              text={item.name}
-              icon={item.icon}
-            />
-          </TouchableOpacity>
-        )}
-        contentContainerStyle={{ margin: 4 }}
-        numColumns={2}
-        keyExtractor={(item, index) => index.toString()}
-      />
-    </View>
+<View style={styles.pillContainer}>
+        <FlatList
+          data={updatedItems} // Use updatedItems instead of filteredItems
+          renderItem={({ item, index }) => (
+            <TouchableOpacity key={index}>
+              <Pill
+                size="small"
+                type={item.type} // Use the updated type property
+                dietaryType={item.dietaryType}
+                text={item.name}
+                icon={item.icon}
+                style={styles.Pill}
+              />
+            </TouchableOpacity>
+          )}
+          // contentContainerStyle={styles.pillContainer}
+          numColumns={3}
+          keyExtractor={(item, index) => index.toString()}
+        />
+        </View>
+      </View>
   );
 };
 
@@ -205,5 +208,22 @@ const styles = StyleSheet.create({
     alignItems: "center",
     gap: 8,
     ...spacing.vert3x,
+  },
+
+  dietaryContainer: {
+    paddingHorizontal: 16,
+  },
+
+  pillContainer: {
+    flexDirection: 'row', // Ensure pills are in a row
+    flexWrap: 'wrap', // Allow wrapping of pills
+    alignItems: 'center', // Center pills vertically
+    justifyContent: 'flex-start', // Start placing pills from the left
+    marginBottom: 8
+  },
+
+  Pill: {
+    marginRight: 8,
+    marginBottom: 8
   },
 });

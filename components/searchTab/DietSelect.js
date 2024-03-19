@@ -1,8 +1,10 @@
-import { View, Text, TouchableOpacity, FlatList } from "react-native";
+import { View, Text, TouchableOpacity, FlatList, StyleSheet } from "react-native";
 import React from "react";
 import Pill from "../../settings/Pill";
 import { useData } from "../DataContext";
 import { PrimaryColors } from "../../settings/styles/Colors";
+import { type } from "../../settings/styles/Typography";
+import { spacing } from "../../settings/styles/Spacing";
 
 export default function DietSelect() {
   const { dietArr, selectedRestriction, setSelectedRestriction } = useData();
@@ -25,7 +27,7 @@ export default function DietSelect() {
 
   return (
     <View>
-      <Text>DietSelect</Text>
+      <Text style={styles.cardSub}>Select your diets</Text>
       <FlatList
         data={dietArr}
         renderItem={({ item, index }) => (
@@ -64,3 +66,11 @@ export default function DietSelect() {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  cardSub: {
+  ...type.body1M,
+  ...spacing.vert1x,
+  marginTop: 16
+  },
+});
