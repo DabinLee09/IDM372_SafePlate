@@ -32,6 +32,7 @@ function SearchTabGroup({ route, navigation }){
 
   return(
     <SearchTab.Navigator screenOptions={{
+      headerShown: false,
       tabBarLabelStyle: {fontSize: 16, textTransform: "none"},
       tabBarActiveTintColor: "#53A385",
       tabBarInactiveTintColor: "#7E7E7E",
@@ -43,7 +44,7 @@ function SearchTabGroup({ route, navigation }){
         backgroundColor: "#53A385",
       } ,
     }}>
-      <SearchTab.Screen name="Default Search" component={SearchTabDefault} />
+      <SearchTab.Screen name="Default Search" component={SearchTabDefault} options={{ headerShown: false, }} />
       <SearchTab.Screen name="Type Search" component={SearchTabType} />
     </SearchTab.Navigator>
   )
@@ -61,9 +62,10 @@ const HomeStack = createStackNavigator();
 function HomeStackGroup({navigation, route}) {
   return(
     // <HomeStack.Navigator initialRouteName='Home' screenOptions={{ headerShown: false}}>
-    <HomeStack.Navigator>
+    <HomeStack.Navigator screenOptions={{ 
+      headerStyle: {backgroundColor: "red",  height: 70,} }}>
       <HomeStack.Group>
-        <HomeStack.Screen name='Home' component={Home} />
+        <HomeStack.Screen name='Home' component={Home} options={{ headerTitle: '', }}  />
         <HomeStack.Screen name='RestaurantDetail' component={RestaurantDetail} initialParams={{ navigation,}}/>
         <HomeStack.Screen name="CuratedGuide" component={CuratedGuide} />
         <HomeStack.Screen name='SearchTabDefault' component={SearchTabDefault} initialParams={{ navigation,}}/>
@@ -71,12 +73,12 @@ function HomeStackGroup({navigation, route}) {
       </HomeStack.Group>
       
       <HomeStack.Group screenOptions={{ presentation: 'modal' }} >
-        <HomeStack.Screen name='SearchTabGroup' component={SearchTabGroup} initialParams={{ 
+        <HomeStack.Screen name='SearchTabGroup' component={SearchTabGroup} options={{ headerTitle: '', }} initialParams={{ 
           headerShown: false,
           tabBarLabel: "Explore",
           tabBarButton: () => (
             <TouchableOpacity onPress={() => navigation.setOptions({ jumpTo: 'SearchTabGroup' })}>
-              {/* 버튼 내용 */}
+              {/* btn content */}
             </TouchableOpacity>
           ),
          }} />
@@ -126,8 +128,8 @@ function TabGroup({ navigation, route }) {
             // }}
             />
             {/* <Tab.Screen name="Home" component={Home}/> */}
-            <Tab.Screen name="Buddies" component={Buddies}/>
-            <Tab.Screen name="Account" component={Account}/>
+            <Tab.Screen name="Buddies" component={Buddies} options={{ headerShown: false, }} />
+            <Tab.Screen name="Account" component={Account} options={{ headerShown: false, }} />
         </Tab.Navigator>
     )
 }

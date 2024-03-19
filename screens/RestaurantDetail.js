@@ -64,8 +64,7 @@ export default function RestaurantDetail({ route }) {
         {/* Reviews */}
         {/* Reviews */}
       {openTab === 2 && (
-        <View style={{backgroundColor:"lightblue"}}>
-        <Text>Reviews open</Text>
+        <View style={{}}>
         <ReviewsTest />
         </View>
         )}

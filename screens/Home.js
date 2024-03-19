@@ -53,6 +53,7 @@ export default function Home({navigation}) {
 
 const styles = StyleSheet.create({
   safeAreaContainer: {
+    flex:1,
     paddingHorizontal: 16,
     paddingVertical: 24,
     backgroundColor: "#fff",
