@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, ScrollView, TouchableOpacity } from "react-native";
+import { View, Text, ScrollView, TouchableOpacity, StyleSheet } from "react-native";
 import About from "../components/restaurantDetail/About";
 import { TabView, TabBar } from "react-native-tab-view";
 import MenuItems from "../components/restaurantDetail/MenuItems";
@@ -14,32 +14,30 @@ export default function RestaurantDetail({ route }) {
 
   return (
     <ScrollView style={{ backgroundColor: "white" }}>
-      <About route={route} />
-      <Text>Hello</Text>
-      <View style={{ flexDirection: "row" }}>
-        {/* Menu Item */}
-        {/* Menu Item */}
+      <About route={route}/>
+
+      {/* <Text>Hello</Text> */}
+
+      {/* Menu Items */}
+      <View style={styles.tabGroup}>
           <TouchableOpacity
             onPress={() => setOpenTab(0)}
-            style={{ backgroundColor: "pink", width: 100, height: 80 }}
-          >
-            <Text>Menu Item</Text>
+            style={{flex: 1}}>
+            <Text style={[styles.tabText, openTab === 0 && styles.selectedTabText]}>Menu Items</Text>
           </TouchableOpacity>
-        {/* Info */}
+
         {/* Info */}
           <TouchableOpacity
             onPress={() => setOpenTab(1)}
-            style={{ backgroundColor: "pink", width: 100, height: 80 }}
-          >
-            <Text>Info</Text>
+            style={{flex: 1}}>
+            <Text style={[styles.tabText, openTab === 1 && styles.selectedTabText]}>Info</Text>
           </TouchableOpacity>
-        {/* Reviews */}
+
         {/* Reviews */}
           <TouchableOpacity
             onPress={() => setOpenTab(2)}
-            style={{ backgroundColor: "pink", width: 100, height: 80 }}
-          >
-            <Text>Reviews</Text>
+            style={{flex: 1}}>
+          <Text style={[styles.tabText, openTab === 2 && styles.selectedTabText]}>Reviews</Text>
           </TouchableOpacity>
       </View>
 
@@ -64,7 +62,8 @@ export default function RestaurantDetail({ route }) {
         {/* Reviews */}
         {/* Reviews */}
       {openTab === 2 && (
-        <View style={{}}>
+        <View style={{backgroundColor:"white"}}>
+        {/* <Text>Reviews open</Text> */}
         <ReviewsTest />
         </View>
         )}
@@ -73,3 +72,26 @@ export default function RestaurantDetail({ route }) {
     </ScrollView>
   );
 }
+
+const styles = StyleSheet.create({
+  tabText: {
+    ...type.heading4M,
+    color: TintsColors.MidGray,
+    textAlign: 'center'
+  },
+  selectedTabText: {
+    color: PrimaryColors.Green,
+  },
+
+  tabGroup: {
+    flexDirection: "row",
+    flex: 1,
+    borderBottomWidth: 1,
+    borderBottomColor: TintsColors.Platinum,
+    alignContent: 'center',
+    justifyContent: 'space-between',
+    marginHorizontal: 16,
+    paddingTop: 24,
+    paddingBottom: 8,
+  },
+})
