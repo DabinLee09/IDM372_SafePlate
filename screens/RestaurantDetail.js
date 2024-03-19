@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { View, Text, ScrollView, TouchableOpacity, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  ScrollView,
+  TouchableOpacity,
+  StyleSheet,
+} from "react-native";
 import About from "../components/restaurantDetail/About";
 import { TabView, TabBar } from "react-native-tab-view";
 import MenuItems from "../components/restaurantDetail/MenuItems";
@@ -17,60 +23,80 @@ export default function RestaurantDetail({ route }) {
 
   return (
     <ScrollView style={{ backgroundColor: "white" }}>
-      <About route={route}/>
+      <About route={route} />
 
       {/* <Text>Hello</Text> */}
 
       {/* Menu Items */}
       <View style={styles.tabGroup}>
-          <TouchableOpacity
-            onPress={() => setOpenTab(0)}
-            style={{flex: 1}}>
-            <Text style={[styles.tabText, openTab === 0 && styles.selectedTabText]}>Menu Items</Text>
-          </TouchableOpacity>
+        <TouchableOpacity onPress={() => setOpenTab(0)} style={{ flex: 1 }}>
+          <Text
+            style={[styles.tabText, openTab === 0 && styles.selectedTabText]}
+          >
+            Menu Items
+          </Text>
+        </TouchableOpacity>
 
         {/* Info */}
-          <TouchableOpacity
-            onPress={() => setOpenTab(1)}
-            style={{flex: 1}}>
-            <Text style={[styles.tabText, openTab === 1 && styles.selectedTabText]}>Info</Text>
-          </TouchableOpacity>
+        <TouchableOpacity onPress={() => setOpenTab(1)} style={{ flex: 1 }}>
+          <Text
+            style={[styles.tabText, openTab === 1 && styles.selectedTabText]}
+          >
+            Info
+          </Text>
+        </TouchableOpacity>
 
         {/* Reviews */}
-          <TouchableOpacity
-            onPress={() => setOpenTab(2)}
-            style={{flex: 1}}>
-          <Text style={[styles.tabText, openTab === 2 && styles.selectedTabText]}>Reviews</Text>
-          </TouchableOpacity>
+        <TouchableOpacity onPress={() => setOpenTab(2)} style={{ flex: 1 }}>
+          <Text
+            style={[styles.tabText, openTab === 2 && styles.selectedTabText]}
+          >
+            Reviews
+          </Text>
+        </TouchableOpacity>
       </View>
-
-
 
       <View>
         {/* Menu Item */}
         {/* Menu Item */}
-      {openTab === 0 && (
+        {openTab === 0 && (
           <View>
-            <View>
+            <View style={{ flexDirection: "row", backgroundColor: TintsColors.LightGray, padding: 16,}}>
               {/* FilteredMenu */}
-            <TouchableOpacity
-            onPress={() => setSelect(true)}
-            style={{flex: 1}}>
-            <Text style={[styles.tabText, openTab === 0 && styles.selectedTabText]}>FilteredMenu</Text>
-          </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => setSelect(true)}
+                style={[{ flex: 1 }, select ? styles.selectedBtn : styles.unSelectedBtn]}
+              >
+                <Text
+                  style={[
+                    styles.tabText,select ? styles.selectedBtnText : styles.unSelectedBtnText
+                  ]}
+                >
+                  FilteredMenu
+                </Text>
+              </TouchableOpacity>
 
-        {/* FullMenu */}
-          <TouchableOpacity
-            onPress={() => setSelect(false)}
-            style={{flex: 1}}>
-            <Text style={[styles.tabText, openTab === 1 && styles.selectedTabText]}>FullMenu</Text>
-          </TouchableOpacity>
+              {/* FullMenu */}
+              <TouchableOpacity
+                onPress={() => setSelect(false)}
+                style={[{ flex: 1 },  select ? styles.unSelectedBtn : styles.selectedBtn]}
+              >
+                <Text
+                  style={[
+                    styles.tabText, select ? styles.unSelectedBtnText : styles.selectedBtnText
+                  ]}
+                >
+                  FullMenu
+                </Text>
+              </TouchableOpacity>
             </View>
-            {select ? <FullMenu route={route} /> : <FilteredMenu route={route} />}
+            {select ? (
+             <FilteredMenu route={route} />
+            ) : (
+              <FullMenu route={route} />
+            )}
           </View>
         )}
-
-
 
         {/* Info */}
         {/* Info */}
@@ -82,13 +108,12 @@ export default function RestaurantDetail({ route }) {
 
         {/* Reviews */}
         {/* Reviews */}
-      {openTab === 2 && (
-        <View style={{backgroundColor:"white"}}>
-        {/* <Text>Reviews open</Text> */}
-        <ReviewsTest route={route} />
-        </View>
+        {openTab === 2 && (
+          <View style={{ backgroundColor: "white" }}>
+            {/* <Text>Reviews open</Text> */}
+            <ReviewsTest route={route} />
+          </View>
         )}
-
       </View>
     </ScrollView>
   );
@@ -98,7 +123,7 @@ const styles = StyleSheet.create({
   tabText: {
     ...type.heading4M,
     color: TintsColors.MidGray,
-    textAlign: 'center'
+    textAlign: "center",
   },
   selectedTabText: {
     color: PrimaryColors.Green,
@@ -109,10 +134,36 @@ const styles = StyleSheet.create({
     flex: 1,
     borderBottomWidth: 1,
     borderBottomColor: TintsColors.Platinum,
-    alignContent: 'center',
-    justifyContent: 'space-between',
+    alignContent: "center",
+    justifyContent: "space-between",
     marginHorizontal: 16,
     paddingTop: 24,
     paddingBottom: 8,
   },
-})
+
+  selectedBtn: {
+    padding: 8,
+    backgroundColor: PrimaryColors.Green,
+    borderRadius: 4,
+    color: "white"
+
+  },
+  unSelectedBtn: {
+    padding: 8,
+    backgroundColor: "#DCE7E6",
+    borderRadius: 4,
+    color: PrimaryColors.Green,
+
+  },
+  selectedBtnText: {
+    color: "white"
+
+  },
+  unSelectedBtnText: {
+    color: PrimaryColors.Green,
+  }
+
+
+});
+
+

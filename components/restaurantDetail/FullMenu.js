@@ -246,7 +246,8 @@ const allergyDietArr = [
 
   return (
     <View style={{ flex: 1, paddingHorizontal: 16 }}>
-      <Text>FullMenu</Text>
+      <Text style={[type.heading2L, {color: TintsColors.DarkGray}, {paddingTop: 24}]}>FullMenu</Text>
+      <Text style={[type.body1M, {color: TintsColors.MidGray}, spacing.vert3x]}>Explore other menus</Text>
       <FlatList
         data={asianArr}
         renderItem={({ item }) => (

@@ -9,7 +9,7 @@ import { spacing } from "../../settings/styles/Spacing";
 import { Image } from "react-native";
 import { Divider } from "@rneui/base";
 
-export default function FullMenu() {
+export default function FilteredMenu() {
   const { select } = useData();
 
 
@@ -19,7 +19,7 @@ const allergyDietArr = [
         name: "Wheat",
         icon: DietaryIcons.WheatSolid ,
         dietaryType: "allergy",
-        type: select,
+        type: "inactive",
       },
       {
         name: "Peanut",
@@ -43,31 +43,31 @@ const allergyDietArr = [
         name: "Sesame",
         icon: DietaryIcons.SesameSolid ,
         dietaryType: "allergy",
-        type: select,
+        type: "inactive",
       },
       {
         name: "Soy",
         icon: DietaryIcons.SoySolid ,
         dietaryType: "allergy",
-        type: select,
+        type: "inactive",
       },
       {
         name: "Fish",
         icon: DietaryIcons.FishSolid ,
         dietaryType: "allergy",
-        type: select,
+        type: "inactive",
       },
       {
         name: "Shellfish",
         icon: DietaryIcons.ShellfishSolid ,
         dietaryType: "allergy",
-        type: select,
+        type: "inactive",
       },
       {
         name: "Treenut",
         icon: DietaryIcons.TreenutSolid,
         dietaryType: "allergy",
-        type: select,
+        type: "inactive",
       },
       {
         name: "Halal",
@@ -79,19 +79,19 @@ const allergyDietArr = [
         name: "Vegan",
         icon: DietaryIcons.VeganSolid ,
         dietaryType: "diet",
-        type: select,
+        type: "inactive",
       },
       {
         name: "Vegetarian",
         icon: DietaryIcons.VegetarianSolid ,
         dietaryType: "diet",
-        type: select,
+        type: "inactive",
       },
       {
         name: "keto",
         icon: DietaryIcons.KetoSolid ,
         dietaryType: "diet",
-        type: select,
+        type: "inactive",
       },
 
 ]
@@ -148,18 +148,6 @@ const allergyDietArr = [
     },
     {
       restaurantCuisine: "Asian",
-      menuItemName: "Kim Son Deluxe Lomein",
-      menuItemDescription:
-        "Lomein noodles stir-fried with beef, chicken, shrimp, cabbage, carrots & onions in Mama La's special sauce.",
-      menuItemPrice: "$18.60",
-      menuItemImageUrl:
-        "https://doordash-static.s3.amazonaws.com/media/photosV2/167e0580-277e-4f44-b4a4-8548911db6d2-d6f93dfc-2ae8-4681-8096-156af3912473-retina-large.JPG",
-      menuItemCategory: "Stir-Fried Noodles",
-      menuItemAllergies: "tree nut, fish",
-      menuItemDiets: "",
-    },
-    {
-      restaurantCuisine: "Asian",
       menuItemName: "Pad Thai",
       menuItemDescription:
         "Thin rice noodles stir-fried with chicken & shrimp in our tangy, spicy Thai-style sauce. Served with bean sprouts jalapenos, cilantro, lime & peanuts",
@@ -208,18 +196,6 @@ const allergyDietArr = [
     },
     {
       restaurantCuisine: "Asian",
-      menuItemName: "Sesame Chicken",
-      menuItemDescription:
-        "Served with vegetable fried rice. Steamed white or brown rice available upon request.",
-      menuItemPrice: "$17.10",
-      menuItemImageUrl:
-        "https://doordash-static.s3.amazonaws.com/media/photosV2/d94aef82-88a3-47dc-89d0-8397c253903c-78ee14dc-ecda-44e3-ad5b-b53508c1d769-retina-large.JPG",
-      menuItemCategory: "Chicken - Wok Combinations",
-      menuItemAllergies: "fish, shellfish, keto",
-      menuItemDiets: "",
-    },
-    {
-      restaurantCuisine: "Asian",
       menuItemName: "Deluxe Tofu",
       menuItemDescription:
         "Served with vegetable fried rice. Steamed white or brown rice available upon request.",
@@ -246,7 +222,8 @@ const allergyDietArr = [
 
   return (
     <View style={{ flex: 1, paddingHorizontal: 16 }}>
-      <Text>FullMenu</Text>
+      <Text style={[type.heading2L, {color: TintsColors.DarkGray},{paddingTop: 24}]}>Filtered Menu</Text>
+      <Text style={[type.body1M, {color: TintsColors.MidGray}, spacing.vert3x]}>Based on your group’s restrictions</Text>
       <FlatList
         data={asianArr}
         renderItem={({ item }) => (
@@ -332,7 +309,7 @@ const AllergyItem = ({ allergy, allergyDietArr }) => {
     <Pill
       style={[spacing.vert1x, { marginRight: 8 }]}
       size="small" // Specify the size: 'small' or 'large'
-      type="inactive" // Specify the type: 'active' or 'inactive'
+      type={allergyItem.type}// Specify the type: 'active' or 'inactive'
       dietaryType={allergyItem.dietaryType} // Specify the dietary type: 'allergy' or 'diet'
       text={allergyItem.name} // Specify the text to display in the pill
       icon={allergyItem.icon} // Pass the icon component or source if needed
