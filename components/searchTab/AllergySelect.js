@@ -26,7 +26,7 @@ export default function AllergySelect() {
 
   return (
     <View>
-      <Text>AllergySelect</Text>
+      {/* <Text>AllergySelect</Text> */}
       <FlatList
         data={allergyArr}
         renderItem={({ item, index }) => (
@@ -56,12 +56,12 @@ export default function AllergySelect() {
         numColumns={2}
         keyExtractor={(item, index) => index.toString()}
       />
-      <Text>Selected: {selectedRestriction.length}</Text>
-      <Text>
+      {/* <Text>Selected: {selectedRestriction.length}</Text> */}
+      {/* <Text>
         {selectedRestriction.map((name, index) => (
           <Text key={index}>{name}, </Text>
         ))}
-      </Text>
+      </Text> */}
     </View>
   );
 }

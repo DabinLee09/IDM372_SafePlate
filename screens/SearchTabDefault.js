@@ -30,6 +30,8 @@ export default function SearchTabDefault() {
     setOpenCard(9);
   };
 
+  const { selectedRestriction } = useData();
+
   const continueBtn = () => {
     setOpenCard((openCard) => {
       console.log("SearchTabDefault.js/continueBtn/prevCardNum  :", openCard);
@@ -91,18 +93,19 @@ export default function SearchTabDefault() {
               exiting={FadeOut.duration(200)}
             >
               <Text style={styles.previewText}>What</Text>
-              <Text style={styles.previewDate}>Im flexible</Text>
+              <Text style={styles.previewDate}>{selectedRestriction.length} restrictions</Text>
             </AnimatedTouchableOpacity>
           )}
 
           {openCard === 1 && (
             <>
               <Text style={styles.cardHeader}>What</Text>
-              {/* <Text style={styles.cardSub}>Im flexible</Text> */}
+              <Text style={styles.cardSub}>Select your allergies</Text>
               <Animated.View>
                 <AllergySelect/>
                 <DietSelect />
               </Animated.View>
+
             </>
           )}
         </View>
@@ -251,15 +254,17 @@ const styles = StyleSheet.create({
   cardHeader: {
     fontSize: 24,
     // padding: 16,
-    paddingVertical: 16,
+    paddingTop: 16,
+    ...spacing.vert1x,
     fontWeight: "bold",
   },
   cardSub: {
-    fontSize: 14,
-    color: "#333",
-    fontWeight: "400",
-    paddingLeft: 16,
-    paddingBottom: 16,
+    // fontSize: 14,
+    // color: "#333",
+    // fontWeight: "400",
+    // paddingLeft: 16,
+    ...type.body1M,
+    ...spacing.vert1x,
   },
   cardBody: {
     paddingHorizontal: 16,
