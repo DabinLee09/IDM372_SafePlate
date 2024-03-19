@@ -27,8 +27,8 @@ export default function Reviews() {
             <Ionicons name="star-half" size={24} style={{ color: SecondaryColors.BrightYellow }} />
           </View>
 
-          <Text style={styles.numberRating}>4.8 / 5.0</Text>
-          <Text style={styles.caption}>Based on 1488 reviews</Text>
+          <Text style={styles.numberRating}>4.2 / 5.0</Text>
+          <Text style={styles.caption}>Based on 294 reviews</Text>
 
           <Image style={styles.image} source={require('../../assets/images/review-bar.jpg')} />
         </View>
