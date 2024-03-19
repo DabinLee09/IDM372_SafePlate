@@ -67,7 +67,7 @@ export default function SearchTabDefault() {
           {openCard === 0 && (
             <>
               <Text style={styles.cardHeader}>Who</Text>
-              <Text style={styles.cardSub}>Im flexible</Text>
+              {/* <Text style={styles.cardSub}>Im flexible</Text> */}
               <Animated.View>
                 <BuddySelect />
               </Animated.View>
@@ -250,7 +250,8 @@ const styles = StyleSheet.create({
   },
   cardHeader: {
     fontSize: 24,
-    padding: 16,
+    // padding: 16,
+    paddingVertical: 16,
     fontWeight: "bold",
   },
   cardSub: {
